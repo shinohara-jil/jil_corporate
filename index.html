@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JIL | Coevolution of People & Technology</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* --- 1. Design System & Variables --- */
+        :root {
+            /* Palette */
+            --bg-color: #f8fbff;
+            --text-main: #1a1a1a;
+            --text-sub: #666666;
+
+            /* Accents */
+            --accent-blob-1: #a7dbff;
+            /* Clear Blue */
+            --accent-blob-2: #cbf3f0;
+            /* Aqua Mint */
+            --accent-blob-3: #d4e0ff;
+            /* Pale Lavender */
+            --accent-sparkle: #F2E94E;
+            /* Sparkle Yellow */
+
+            /* Glassmorphism */
+            --card-bg: rgba(255, 255, 255, 0.65);
+            --card-border: rgba(255, 255, 255, 0.9);
+            --card-shadow: 0 10px 30px rgba(167, 219, 255, 0.15);
+
+            /* Typography */
+            --font-en: 'Manrope', sans-serif;
+            --font-jp: 'Zen Kaku Gothic New', sans-serif;
+
+            /* Animation */
+            --easing: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* --- Reset & Base --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-jp);
+            color: var(--text-main);
+            background-color: var(--bg-color);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            font-feature-settings: "palt";
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: opacity 0.3s;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* --- Typography Utility --- */
+        .font-en {
+            font-family: var(--font-en);
+        }
+
+        .font-jp {
+            font-family: var(--font-jp);
+        }
+
+        .fw-bold {
+            font-weight: 700;
+        }
+
+        .fw-extra {
+            font-weight: 800;
+        }
+
+        /* --- 2. Background Animation (Blobs) --- */
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            background-color: var(--bg-color);
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.8;
+            animation: float 25s infinite ease-in-out alternate;
+            will-change: transform;
+        }
+
+        .blob-1 {
+            width: 60vw;
+            height: 60vw;
+            background: var(--accent-blob-1);
+            top: -10%;
+            left: -10%;
+            animation-duration: 30s;
+        }
+
+        .blob-2 {
+            width: 50vw;
+            height: 50vw;
+            background: var(--accent-blob-2);
+            bottom: -10%;
+            right: -5%;
+            animation-duration: 25s;
+            animation-delay: -5s;
+        }
+
+        .blob-3 {
+            width: 40vw;
+            height: 40vw;
+            background: var(--accent-blob-3);
+            top: 40%;
+            left: 30%;
+            animation-duration: 28s;
+            animation-delay: -10s;
+            opacity: 0.6;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(30px, -50px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(-20px, 20px) scale(0.9);
+            }
+
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+        }
+
+        /* --- 3. Glassmorphism Components --- */
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--card-border);
+            border-radius: 30px;
+            box-shadow: var(--card-shadow);
+            padding: 40px;
+            transition: transform 0.4s var(--easing), box-shadow 0.4s var(--easing);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(167, 219, 255, 0.25);
+        }
+
+        /* --- Header --- */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6vw;
+            /* Align with container */
+            z-index: 1000;
+            transition: all 0.4s var(--easing);
+        }
+
+        .header.scrolled {
+            height: 70px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        .logo {
+            font-family: var(--font-en);
+            font-weight: 800;
+            font-size: 24px;
+            letter-spacing: 0.02em;
+            color: var(--text-main);
+        }
+
+        .nav {
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .nav {
+                display: block;
+                margin-left: auto;
+                /* Push to right */
+                margin-right: 40px;
+                /* Space between Nav and CTA */
+            }
+        }
+
+        .nav-list {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            /* Remove dots */
+        }
+
+        .nav-item {
+            font-family: var(--font-en);
+            font-size: 16px;
+            /* Increased from 14px */
+            font-weight: 700;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--accent-blob-1);
+            transition: width 0.3s var(--easing);
+        }
+
+        .nav-item:hover::after {
+            width: 100%;
+        }
+
+        .btn-contact {
+            background-color: var(--text-main);
+            color: #fff;
+            padding: 14px 34px;
+            /* Increased padding */
+            font-size: 14px;
+            /* Increased from 13px */
+            font-weight: 700;
+            font-family: var(--font-en);
+            border-radius: 50px;
+            /* Pill shape for friendly look */
+            transition: transform 0.3s var(--easing), box-shadow 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            position: relative;
+            /* 少し高さを縮めて次のセクションが見えやすくする */
+            min-height: 70vh;
+            /* Reduced from 90vh */
+            display: flex;
+            align-items: center;
+            /* 下部の余白を減らす */
+            padding: 80px 6vw 20px;
+            /* Reduced padding */
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            /* Increased z-index for visibility */
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .hero-title-en {
+            font-family: var(--font-en);
+            /* font-size: clamp(3rem, 7.5vw, 7rem); -> Adjusted smaller */
+            font-size: clamp(2.5rem, 6vw, 5.5rem);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            /* Reduced from 40px */
+        }
+
+        /* Gradient Text for emphasis */
+        .text-gradient {
+            background: linear-gradient(135deg, #1a1a1a 30%, #5d8bb3 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-jp-wrapper {
+            margin-top: 20px;
+            /* Reduced from 40px */
+            padding-left: 0;
+            /* Removed padding */
+            border-left: none;
+            /* Removed border */
+        }
+
+        .hero-title-jp {
+            font-size: clamp(1rem, 1.8vw, 1.4rem);
+            font-weight: 500;
+            color: var(--text-main);
+            line-height: 1.8;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 6vw;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-family: var(--font-en);
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-sub);
+            transform: rotate(-90deg);
+            transform-origin: left bottom;
+        }
+
+        .scroll-line {
+            width: 50px;
+            height: 1px;
+            background: var(--text-sub);
+        }
+
+        /* --- Section Common --- */
+        .section {
+            padding: 60px 0;
+            /* Reduced from 100px */
+        }
+
+        /* 余白を少し縮小 */
+        .container {
+            max-width: none;
+            margin: 0;
+            padding-left: 6vw;
+            padding-right: 6vw;
+            /* Match Header/Hero alignment */
+            width: 100%;
+        }
+
+        .section-label {
+            font-family: var(--font-en);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #88aadd;
+            /* Muted blue */
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .section-heading {
+            font-size: clamp(2rem, 3vw, 2.8rem);
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 60px;
+            letter-spacing: -0.03em;
+        }
+
+        /* About Title Specific Style */
+        .about-title {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 800;
+            font-family: var(--font-en);
+            line-height: 1.2;
+            color: var(--text-main);
+        }
+
+        /* --- About Section --- */
+        #about {
+            /* トップの余白をさらに詰める */
+            padding-top: 0;
+            /* Reduced from 40px */
+        }
+
+        .about-content-wrapper {
+            margin-top: 40px;
+            /* Reduced from 60px */
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        @media (min-width: 900px) {
+            .about-content-wrapper {
+                grid-template-columns: 1fr 1fr;
+                align-items: center;
+                gap: 80px;
+            }
+        }
+
+        /* Left Side */
+        .about-main-message {
+            font-size: clamp(1.2rem, 2vw, 1.4rem);
+            font-weight: 700;
+            line-height: 1.8;
+            color: var(--text-main);
+            margin-bottom: 40px;
+            /* removed white-space: pre-wrap to fix alignment issues */
+        }
+
+        .btn-view-more {
+            display: inline-flex;
+            align-items: center;
+            background-color: #000;
+            color: #fff;
+            padding: 12px 24px 12px 32px;
+            border-radius: 50px;
+            font-family: var(--font-en);
+            font-weight: 700;
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-view-more .arrow-circle {
+            width: 24px;
+            height: 24px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 16px;
+            color: #000;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-view-more:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-view-more:hover .arrow-circle {
+            transform: rotate(45deg);
+        }
+
+        /* Right Side (Mission Box) */
+        .mission-box {
+            padding: 50px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.03);
+            position: relative;
+            /* Make it stick out to the left */
+        }
+
+        @media (min-width: 900px) {
+            .mission-box {
+                /* Removed stick-out effect as requested */
+                width: 100%;
+                z-index: 5;
+            }
+        }
+
+        .mission-title {
+            font-family: var(--font-en);
+            font-size: 18px;
+            /* Slightly smaller for elegance */
+            font-weight: 700;
+            margin-bottom: 32px;
+            color: var(--text-main);
+            letter-spacing: 0.05em;
+        }
+
+        .mission-text p {
+            font-size: 16px;
+            font-weight: 700;
+            /* Bolder */
+            line-height: 2.4;
+            letter-spacing: 0.08em;
+            color: var(--text-main);
+            /* Darker for readability */
+            margin-bottom: 40px;
+            font-feature-settings: "palt";
+        }
+
+        .mission-text p:last-child {
+            margin-bottom: 0;
+            font-size: 18px;
+            /* Emphasis final pargraph */
+            background: linear-gradient(90deg, #1a1a1a, #5d8bb3);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- Service Section --- */
+        .section-desc {
+            font-size: 16px;
+            color: var(--text-sub);
+            margin-bottom: 60px;
+            max-width: 600px;
+        }
+
+        .service-list {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        @media (min-width: 768px) {
+            .service-list {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .service-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 40px !important;
+            /* Force padding */
+            border-radius: 32px !important;
+            background: rgba(255, 255, 255, 0.8) !important;
+            /* White base */
+        }
+
+        .service-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .service-number-label {
+            font-family: var(--font-en);
+            font-size: 12px;
+            font-weight: 700;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .service-arrow-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover .service-arrow-icon {
+            transform: rotate(45deg);
+        }
+
+        .service-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.4;
+            color: var(--text-main);
+        }
+
+        .service-desc {
+            font-size: 14px;
+            color: var(--text-sub);
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .service-image {
+            margin-top: auto;
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .service-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.05);
+        }
+
+        /* Abstract Shape (SVG) */
+        .shape-decoration {
+            position: absolute;
+            right: -100px;
+            top: -50px;
+            width: 300px;
+            height: 300px;
+            opacity: 0.3;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* --- AI Demo Section Styles --- */
+        .ai-demo-wrapper {
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            padding: 40px;
+            display: grid;
+            gap: 40px;
+        }
+
+        @media (min-width: 768px) {
+            .ai-demo-wrapper {
+                grid-template-columns: 1fr 1fr;
+                align-items: start;
+            }
+        }
+
+        .ai-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .ai-input {
+            width: 100%;
+            padding: 16px 24px;
+            border-radius: 16px;
+            border: 1px solid rgba(167, 219, 255, 0.5);
+            background: rgba(255, 255, 255, 0.8);
+            font-family: var(--font-jp);
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .ai-input:focus {
+            border-color: var(--accent-blob-1);
+            box-shadow: 0 0 0 4px rgba(167, 219, 255, 0.2);
+        }
+
+        .btn-ai {
+            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+            color: #fff;
+            padding: 16px 32px;
+            border-radius: 16px;
+            font-weight: 700;
+            font-family: var(--font-en);
+            cursor: pointer;
+            border: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-ai:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-ai:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .ai-result {
+            min-height: 200px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            position: relative;
+        }
+
+        .ai-result h4 {
+            font-size: 14px;
+            color: #88aadd;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
+            font-family: var(--font-en);
+            font-weight: 700;
+        }
+
+        .ai-result-content {
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--text-sub);
+            white-space: pre-wrap;
+        }
+
+        .loading-dots {
+            display: inline-flex;
+            gap: 4px;
+        }
+
+        .loading-dots span {
+            width: 6px;
+            height: 6px;
+            background: currentColor;
+            border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+
+        .loading-dots span:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+
+        .loading-dots span:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            80%,
+            100% {
+                transform: scale(0);
+            }
+
+            40% {
+                transform: scale(1);
+            }
+        }
+
+        /* --- Organization Section --- */
+        .org-grid-wrapper {
+            display: grid;
+            grid-template-columns: 1fr;
+            background: #fff;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        @media (min-width: 900px) {
+            .org-grid-wrapper {
+                grid-template-columns: 2fr 3fr;
+                /* 40% Image, 60% Text */
+            }
+        }
+
+        .org-image-area {
+            position: relative;
+            min-height: 300px;
+        }
+
+        .org-image-area img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .org-info-area {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        @media (min-width: 768px) {
+            .org-info-area {
+                padding: 60px 80px;
+            }
+        }
+
+        .org-item {
+            display: flex;
+            flex-direction: column;
+            border-bottom: 1px solid #eee;
+            padding: 24px 0;
+        }
+
+        @media (min-width: 600px) {
+            .org-item {
+                flex-direction: row;
+                align-items: baseline;
+            }
+        }
+
+        .org-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .org-item:first-child {
+            padding-top: 0;
+        }
+
+        .org-term {
+            width: 140px;
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--text-main);
+            flex-shrink: 0;
+            margin-bottom: 8px;
+        }
+
+        @media (min-width: 600px) {
+            .org-term {
+                margin-bottom: 0;
+            }
+        }
+
+        .org-desc {
+            font-size: 15px;
+            color: var(--text-sub);
+            line-height: 2;
+        }
+
+        /* --- Contact Section (New) --- */
+        .contact-cta-wrapper {
+            position: relative;
+            /* Removed black background */
+            padding: 80px 0;
+            text-align: center;
+            color: #1a1a1a;
+            /* Dark text */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .contact-bg-blob {
+            display: none;
+            /* Hide blob if simplified */
+        }
+
+        .contact-title {
+            font-family: var(--font-jp);
+            /* Switch to JP font */
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            /* Reduced size */
+            font-weight: 700;
+            line-height: 1.4;
+            /* Gradient text for elegance */
+            background: linear-gradient(135deg, #1a1a1a 30%, #5d8bb3 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .contact-btn-large {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #1a1a1a;
+            /* Dark button */
+            color: #fff;
+            /* White text */
+            padding: 24px 60px;
+            /* Wider */
+            border-radius: 100px;
+            font-family: var(--font-en);
+            font-size: 18px;
+            font-weight: 800;
+            text-decoration: none;
+            transition: transform 0.4s var(--easing), box-shadow 0.4s;
+        }
+
+        .contact-btn-large .icon-arrow {
+            margin-left: 20px;
+            width: 32px;
+            height: 32px;
+            background: #fff;
+            /* White arrow bg */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a1a1a;
+            /* Dark arrow */
+            transition: transform 0.4s var(--easing);
+        }
+
+        .contact-btn-large:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-btn-large:hover .icon-arrow {
+            transform: rotate(45deg);
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background: #f8fbff;
+            padding: 60px 6vw 40px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+
+        .footer-logo {
+            font-family: var(--font-en);
+            font-weight: 800;
+            font-size: 40px;
+            color: #1a1a1a;
+            letter-spacing: -0.02em;
+        }
+
+        .footer-nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        .footer-link {
+            font-family: var(--font-en);
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        .footer-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0%;
+            height: 1px;
+            background: #1a1a1a;
+            transition: width 0.3s;
+        }
+
+        .footer-link:hover::after {
+            width: 100%;
+        }
+
+        .copyright {
+            margin-top: 40px;
+            text-align: center;
+            font-family: var(--font-en);
+            font-size: 12px;
+            color: #999;
+            border-top: none;
+            padding-top: 0;
+        }
+
+        /* --- Animation Utilities (Fade In Up) --- */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s var(--easing), transform 1s var(--easing);
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Organization Link Section --- */
+        .org-image-link-wrapper {
+            display: block;
+            position: relative;
+            border-radius: 32px;
+            overflow: hidden;
+            height: 400px;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .org-image-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://placehold.co/1200x400/1a1a1a/5d8bb3?text=Team+Image');
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.6s var(--easing);
+            z-index: 1;
+        }
+
+        .org-image-bg::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            /* Overlay for readability */
+        }
+
+        .org-image-link-wrapper:hover .org-image-bg {
+            transform: scale(1.05);
+        }
+
+        .org-text-overlay {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .org-subtitle {
+            font-family: var(--font-en);
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .org-title-large {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+
+        .org-btn-label {
+            display: inline-block;
+            padding: 12px 30px;
+            border: 1px solid #fff;
+            border-radius: 50px;
+            font-family: var(--font-en);
+            font-size: 14px;
+            font-weight: 700;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .org-image-link-wrapper:hover .org-btn-label {
+            background: #fff;
+            color: var(--text-main);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 2. Background Animation -->
+    <div class="background-container" id="bg-container">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <a href="#" class="logo">JIL</a>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                <li><a href="#about" class="nav-item">About</a></li>
+                <li><a href="#service" class="nav-item">Service</a></li>
+                <li><a href="#organization" class="nav-item">Organization</a></li>
+                <li><a href="#contact" class="nav-item">info</a></li>
+            </ul>
+        </nav>
+
+        <a href="#contact" class="btn-contact">CONTACT</a>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title-en fade-in-up">
+                Japan is Lovely.<br>
+                <span class="text-gradient">We'll Show Them.</span>
+            </h1>
+
+            <div class="hero-jp-wrapper fade-in-up" style="transition-delay: 0.2s;">
+                <p class="hero-title-jp">
+                    日本の可能性を解き放つ。<br>
+                    AI時代を生きる、私たちの手と意思で。
+                </p>
+            </div>
+        </div>
+
+        <div class="scroll-indicator fade-in-up" style="transition-delay: 0.5s;">
+            <span>SCROLL</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="about-title fade-in-up">About JIL</h2>
+
+            <div class="about-content-wrapper">
+                <!-- Left Column -->
+                <div class="about-left fade-in-up" style="transition-delay: 0.1s;">
+                    <p class="about-main-message">私たちJILは、社会やお客様へ感動体験を与える為に、<br>事業開発ナレッジと、AI技術を融合させたチームです。</p>
+                    <a href="#service" class="btn-view-more">
+                        View More
+                        <div class="arrow-circle">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="7" y1="17" x2="17" y2="7"></line>
+                                <polyline points="7 7 17 7 17 17"></polyline>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Right Column (Mission Box) -->
+                <div class="mission-box fade-in-up" style="transition-delay: 0.2s;">
+                    <h3 class="mission-title">Our Mission</h3>
+                    <div class="mission-text">
+                        <p>
+                            日本の可能性と、AIの進化。<br>
+                            そこにある乖離を埋めるのは、きれいごとではない「実践」だ。
+                        </p>
+                        <p>
+                            私たちJILは、新しい技術への「わからなさ」から逃げず、小さな実験と対話を重ねる。<br>
+                            あらゆる現場で、新しい技術を使える形にし、事業としての成果が出るまで伴走する。
+                        </p>
+                        <p>
+                            日本の強固な現場力にデジタルの武器を。<br>
+                            私たちは、日本の真価が世界を変える未来を信じています。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service -->
+    <section id="service" class="section">
+        <div class="container">
+            <span class="section-label fade-in-up">Service</span>
+            <h2 class="section-heading fade-in-up" style="margin-bottom: 20px;">Our Approach</h2>
+            <p class="section-desc fade-in-up">事業開発のエキスパートとして、自社・お客様で数々の事業を創出しています。</p>
+
+            <!-- Service List -->
+            <div class="service-list">
+
+                <!-- Item 1 -->
+                <div class="glass-card service-card fade-in-up" style="transition-delay: 0.1s;">
+                    <div class="service-card-header">
+                        <span class="service-number-label">01 Business Produce</span>
+                        <div class="service-arrow-icon" style="background:#000; color:#fff;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="7" y1="17" x2="17" y2="7"></line>
+                                <polyline points="7 7 17 7 17 17"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="service-content">
+                        <h3 class="service-title">クライアント向け<br>事業開発支援</h3>
+                        <p class="service-desc">
+                            AI・デジタル技術を活用した新規事業の立案から実行までを包括的に支援。現場に入り込み、PoC（概念実証）から本開発、運用定着までを一気通貫でサポートします。
+                        </p>
+                    </div>
+
+                    <div class="service-image">
+                        <!-- Placeholder Image -->
+                        <img src="https://placehold.co/600x350/e0f2fe/5d8bb3?text=Business+Produce"
+                            alt="Business Produce Image">
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="glass-card service-card fade-in-up" style="transition-delay: 0.2s;">
+                    <div class="service-card-header">
+                        <span class="service-number-label">02 Own Product</span>
+                        <div class="service-arrow-icon" style="background:#fff; border:1px solid #eee; color:#000;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="service-content">
+                        <h3 class="service-title">自社事業開発</h3>
+                        <p class="service-desc">
+                            「Japan is Lovely」を体現するプロダクトを自社で開発。観光、伝統産業、教育などの領域において、テクノロジーの力で日本の価値を再定義し、世界へ発信します。
+                        </p>
+                    </div>
+
+                    <div class="service-image">
+                        <!-- Placeholder Image -->
+                        <img src="https://placehold.co/600x350/f0f9ff/5d8bb3?text=Own+Product" alt="Own Product Image">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Organization Link -->
+    <section id="team-link" class="section">
+        <div class="container">
+            <a href="#organization" class="org-image-link-wrapper fade-in-up">
+                <div class="org-image-bg"></div>
+                <div class="org-text-overlay">
+                    <span class="org-subtitle">Organization</span>
+                    <h2 class="org-title-large">株式会社JILの組織メンバーを見る</h2>
+                    <span class="org-btn-label">view team</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Organization -->
+    <section id="organization" class="section">
+        <div class="container">
+            <span class="section-label fade-in-up">Organization</span>
+            <h2 class="section-heading fade-in-up">Company Info</h2>
+
+            <div class="org-grid-wrapper fade-in-up">
+                <!-- Left: Image -->
+                <div class="org-image-area">
+                    <img src="C:/Users/tshin/.gemini/antigravity/brain/f6bdec50-8ee8-416f-8d44-4a9c70110c2c/office_interior_1765957587046.png"
+                        alt="JIL Office">
+                </div>
+
+                <!-- Right: Info -->
+                <div class="org-info-area">
+                    <div class="org-item">
+                        <div class="org-term">会社名</div>
+                        <div class="org-desc">株式会社JIL (JIL inc.)</div>
+                    </div>
+                    <div class="org-item">
+                        <div class="org-term">設立</div>
+                        <div class="org-desc">2024年5月</div>
+                    </div>
+                    <div class="org-item">
+                        <div class="org-term">役員</div>
+                        <div class="org-desc">
+                            代表取締役　武井遼太郎<br>
+                            取締役　　　篠原孝弘<br>
+                            監査役　　　田中伸英
+                        </div>
+                    </div>
+                    <div class="org-item">
+                        <div class="org-term">資本金</div>
+                        <div class="org-desc">500万円</div>
+                    </div>
+                    <div class="org-item">
+                        <div class="org-term">所在地</div>
+                        <div class="org-desc">
+                            〒150-0001<br>
+                            東京都渋谷区神宮前六丁目23番4号<br>
+                            桑野ビル2階
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact (New Design) -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="contact-cta-wrapper fade-in-up">
+                <div class="contact-bg-blob"></div>
+                <h2 class="contact-title">お仕事・採用のお問い合わせはこちら</h2>
+                <a href="mailto:info@jilinc.co.jp" class="contact-btn-large">
+                    Contact Us
+                    <div class="icon-arrow">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <a href="#" class="footer-logo">JIL</a>
+            <nav class="footer-nav">
+                <a href="#about" class="footer-link">About</a>
+                <a href="#service" class="footer-link">Service</a>
+                <a href="#organization" class="footer-link">Organization</a>
+                <a href="#contact" class="footer-link">info</a>
+            </nav>
+        </div>
+        <div class="copyright">
+            &copy; 2025 JIL Inc. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        // --- Gemini API Logic ---
+        async function generateIdea() {
+            const inputField = document.getElementById('idea-input');
+            const outputField = document.getElementById('idea-output');
+            const btn = document.getElementById('generate-btn');
+            const keyword = inputField.value.trim();
+
+            if (!keyword) {
+                alert('キーワードを入力してください');
+                return;
+            }
+
+            // UI Loading State
+            outputField.innerHTML = '<div class="loading-dots"><span></span><span></span><span></span></div> Thinking...';
+            btn.disabled = true;
+            btn.innerHTML = 'Thinking...';
+
+            const apiKey = ""; // API Key is injected by the environment
+            const prompt = `
+                あなたは株式会社JIL（Japan is Lovely）のAIコンサルタントです。
+                ユーザーが入力した業界キーワード「${keyword}」に基づき、日本の強みと最新のデジタル技術（AI, AR, IoTなど）を組み合わせた、革新的かつ実現可能性のある新規事業アイデアを1つ提案してください。
+
+                出力フォーマット：
+                【事業タイトル】キャッチーな名前
+                【概要】どのような課題を、どう技術で解決するか（150文字程度）
+                【提供価値】なぜそれが日本にとって重要か
+
+                口調はプロフェッショナルかつ未来的で、希望を感じさせるものにしてください。
+            `;
+
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: prompt }] }]
+                    })
+                });
+
+                if (!response.ok) throw new Error('API Request Failed');
+
+                const data = await response.json();
+                const text = data.candidates?.[0]?.content?.parts?.[0]?.text || "申し訳ありません。アイデアの生成に失敗しました。もう一度お試しください。";
+
+                // Typing Effect for Output
+                outputField.innerHTML = '';
+                let i = 0;
+                const speed = 20;
+                function typeWriter() {
+                    if (i < text.length) {
+                        outputField.innerHTML += text.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, speed);
+                    }
+                }
+                typeWriter();
+
+            } catch (error) {
+                console.error(error);
+                outputField.textContent = "エラーが発生しました。ネットワーク接続を確認してください。";
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = 'Generate Idea ✨';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // 4.1 Scroll Interaction (Intersection Observer)
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Run once
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in-up').forEach(el => {
+                observer.observe(el);
+            });
+
+
+            // 4.1 Mouse Parallax for Background Blobs
+            const bgContainer = document.getElementById('bg-container');
+
+            document.addEventListener('mousemove', (e) => {
+                const x = e.clientX / window.innerWidth;
+                const y = e.clientY / window.innerHeight;
+
+                const blobs = bgContainer.querySelectorAll('.blob');
+                blobs.forEach((blob, index) => {
+                    const speed = (index + 1) * 20;
+                    const moveX = (0.5 - x) * speed;
+                    const moveY = (0.5 - y) * speed;
+                    // Note: This parallax is subtle to not interfere with CSS animation significantly
+                    // For stronger effect, we would manipulate the DOM element's position directly
+                    // but keeping it simple to maintain the keyframes flow.
+                });
+            });
+
+
+            // Header Scroll Effect
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Smooth Scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
