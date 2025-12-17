@@ -520,10 +520,16 @@
 
         /* --- Service Section --- */
         .section-desc {
-            font-size: 16px;
-            color: var(--text-sub);
+            font-size: 18px;
+            /* Enlarged */
+            font-weight: 700;
+            /* Bold */
+            color: var(--text-main);
+            /* Darker */
             margin-bottom: 60px;
-            max-width: 600px;
+            max-width: 800px;
+            /* Widened */
+            line-height: 2;
         }
 
         .service-list {
@@ -560,25 +566,40 @@
 
         .service-number-label {
             font-family: var(--font-en);
-            font-size: 12px;
-            font-weight: 700;
+            font-size: 16px;
+            /* Increased from 12px */
+            font-weight: 800;
+            /* Bolder */
             color: #999;
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
 
         .service-arrow-icon {
-            width: 32px;
-            height: 32px;
+            width: 40px;
+            /* Slightly larger */
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.3s;
+            transition: all 0.3s ease;
+            background: #fff;
+            /* Default White BG */
+            color: #000;
+            /* Default Black Icon */
+            border: 1px solid rgba(0, 0, 0, 0.1);
         }
 
+        /* Card Hover Effect */
         .service-card:hover .service-arrow-icon {
+            background: #000;
+            /* Hover Black BG */
+            color: #fff;
+            /* Hover White Icon */
+            border-color: #000;
             transform: rotate(45deg);
+            /* Arrow rotation */
         }
 
         .service-title {
@@ -1176,21 +1197,23 @@
     <section id="service" class="section">
         <div class="container">
             <span class="section-label fade-in-up">Service</span>
-            <h2 class="section-heading fade-in-up" style="margin-bottom: 20px;">Our Approach</h2>
+            <h2 class="section-heading fade-in-up" style="margin-bottom: 20px;">Our Business</h2>
             <p class="section-desc fade-in-up">事業開発のエキスパートとして、自社・お客様で数々の事業を創出しています。</p>
 
             <!-- Service List -->
             <div class="service-list">
 
                 <!-- Item 1 -->
-                <div class="glass-card service-card fade-in-up" style="transition-delay: 0.1s;">
+                <a href="#" class="glass-card service-card fade-in-up"
+                    style="transition-delay: 0.1s; text-decoration: none; color: inherit;">
                     <div class="service-card-header">
-                        <span class="service-number-label">01 Business Produce</span>
-                        <div class="service-arrow-icon" style="background:#000; color:#fff;">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="7" y1="17" x2="17" y2="7"></line>
-                                <polyline points="7 7 17 7 17 17"></polyline>
+                        <span class="service-number-label">01 Client Solution</span>
+                        <div class="service-arrow-icon">
+                            <!-- Horizontal Arrow -->
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
                             </svg>
                         </div>
                     </div>
@@ -1198,24 +1221,26 @@
                     <div class="service-content">
                         <h3 class="service-title">クライアント向け<br>事業開発支援</h3>
                         <p class="service-desc">
-                            AI・デジタル技術を活用した新規事業の立案から実行までを包括的に支援。現場に入り込み、PoC（概念実証）から本開発、運用定着までを一気通貫でサポートします。
+                            培ってきた事業開発ナレッジと、最先端の生成AIのナレッジを掛け合わせて、弊社ならではの事業開発支援をお客様へご提供いたします。
                         </p>
                     </div>
 
                     <div class="service-image">
                         <!-- Placeholder Image -->
-                        <img src="https://placehold.co/600x350/e0f2fe/5d8bb3?text=Business+Produce"
-                            alt="Business Produce Image">
+                        <img src="https://placehold.co/600x350/e0f2fe/5d8bb3?text=Client+Solution"
+                            alt="Client Solution Image">
                     </div>
-                </div>
+                </a>
 
                 <!-- Item 2 -->
-                <div class="glass-card service-card fade-in-up" style="transition-delay: 0.2s;">
+                <a href="#" class="glass-card service-card fade-in-up"
+                    style="transition-delay: 0.2s; text-decoration: none; color: inherit;">
                     <div class="service-card-header">
                         <span class="service-number-label">02 Own Product</span>
-                        <div class="service-arrow-icon" style="background:#fff; border:1px solid #eee; color:#000;">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <div class="service-arrow-icon">
+                            <!-- Horizontal Arrow -->
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12 5 19 12 12 19"></polyline>
                             </svg>
@@ -1225,7 +1250,7 @@
                     <div class="service-content">
                         <h3 class="service-title">自社事業開発</h3>
                         <p class="service-desc">
-                            「Japan is Lovely」を体現するプロダクトを自社で開発。観光、伝統産業、教育などの領域において、テクノロジーの力で日本の価値を再定義し、世界へ発信します。
+                            「Japan is Lovely」を体現するプロダクトを自社で開発。AIを活用したプロダクト開発により、これまでにない顧客体験を創出します。
                         </p>
                     </div>
 
@@ -1233,7 +1258,7 @@
                         <!-- Placeholder Image -->
                         <img src="https://placehold.co/600x350/f0f9ff/5d8bb3?text=Own+Product" alt="Own Product Image">
                     </div>
-                </div>
+                </a>
 
             </div>
         </div>
@@ -1242,6 +1267,8 @@
     <!-- Team Organization Link -->
     <section id="team-link" class="section">
         <div class="container">
+            <span class="section-label fade-in-up">Organization</span>
+            <h2 class="section-heading fade-in-up" style="margin-bottom: 40px;">Organization</h2>
             <a href="#organization" class="org-image-link-wrapper fade-in-up">
                 <div class="org-image-bg"></div>
                 <div class="org-text-overlay">
