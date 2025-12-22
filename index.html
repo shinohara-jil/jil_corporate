@@ -16,32 +16,26 @@
     <style>
         /* --- 1. Design System & Variables --ss- */
         :root {
-            /* Palette */
-            --bg-color: #f8fbff;
+            --bg-color: #fcfbf9;
+            /* PKSHA風の温かみのあるオフホワイト */
             --text-main: #1a1a1a;
+            /* 漆黒ではない柔らかい黒 */
             --text-sub: #666666;
-
-            /* Accents - Lighter/Fainter Styles */
-            --accent-blob-1: #cceeff;
-            /* Lighter Blue */
-            --accent-blob-2: #e0f9f6;
-            /* Lighter Mint */
-            --accent-blob-3: #f2eaff;
-            /* Lighter Lavender */
-            --accent-sparkle: #fffacd;
-            /* Lemon Chiffon */
-
-            /* Glassmorphism */
-            --card-bg: rgba(255, 255, 255, 0.65);
-            --card-border: rgba(255, 255, 255, 0.9);
-            --card-shadow: 0 10px 30px rgba(167, 219, 255, 0.15);
-
-            /* Typography */
+            --accent-blob-1: #ff9a9e;
+            /* U.S Inc.風のピンク */
+            --accent-blob-2: #fad0c4;
+            /* 柔らかなピーチ */
+            --accent-blob-3: #a18cd1;
+            /* 知的な薄紫 */
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --card-border: rgba(255, 255, 255, 0.8);
+            --card-shadow: 0 10px 30px rgba(167, 219, 255, 0.1);
             --font-en: 'Manrope', sans-serif;
             --font-jp: 'Zen Kaku Gothic New', sans-serif;
+            --font-mincho: 'Shippori Mincho', serif;
 
             /* Animation */
-            --easing: cubic-bezier(0.16, 1, 0.3, 1);
+            --easing: cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         /* --- Reset & Base --- */
@@ -90,75 +84,52 @@
             font-weight: 800;
         }
 
-        /* --- 2. Background Animation (Blobs) --- */
-        .background-container {
+        /* --- 背景のアニメーション（有機的なBlob） --- */
+        .background-blobs {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            width: 100vw;
-            height: 100vh;
             z-index: -1;
             overflow: hidden;
-            /* Subtle changing gradient: Pale Blue -> Pale Lavender -> Pale Mint -> White */
-            background: linear-gradient(120deg, #e0f2fe, #f3e8ff, #e6ffFA, #ffffff);
-            background-size: 400% 400%;
-            animation: bgShift 20s ease infinite;
-        }
-
-        @keyframes bgShift {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
+            pointer-events: none;
+            background-color: var(--bg-color);
         }
 
         .blob {
             position: absolute;
             border-radius: 50%;
             filter: blur(80px);
-            opacity: 0.5;
-            /* Reduced from 0.8 for lighter feel */
-            animation: float 25s infinite ease-in-out alternate;
-            will-change: transform;
+            opacity: 0.6;
+            animation: float 20s infinite ease-in-out alternate;
         }
 
         .blob-1 {
-            width: 60vw;
-            height: 60vw;
+            width: 600px;
+            height: 600px;
             background: var(--accent-blob-1);
             top: -10%;
             left: -10%;
-            animation-duration: 30s;
+            animation-delay: 0s;
         }
 
         .blob-2 {
-            width: 50vw;
-            height: 50vw;
-            background: var(--accent-blob-2);
+            width: 500px;
+            height: 500px;
+            background: var(--accent-blob-3);
             bottom: -10%;
-            right: -5%;
-            animation-duration: 25s;
+            right: -10%;
             animation-delay: -5s;
         }
 
         .blob-3 {
-            width: 40vw;
-            height: 40vw;
-            background: var(--accent-blob-3);
+            width: 400px;
+            height: 400px;
+            background: var(--accent-blob-2);
             top: 40%;
-            left: 30%;
-            animation-duration: 28s;
+            left: 40%;
             animation-delay: -10s;
-            opacity: 0.6;
         }
 
         @keyframes float {
@@ -177,17 +148,6 @@
             100% {
                 transform: translate(0, 0) scale(1);
             }
-        }
-
-        #bg-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-            /* Ensure it is above the blobs (z-index of blobs is implied/default stack), but below content */
         }
 
         /* --- 3. Glassmorphism Components --- */
@@ -1136,12 +1096,11 @@
 
 <body>
 
-    <!-- 2. Background Animation -->
-    <div class="background-container" id="bg-container">
+    <!-- 背景のアニメーション（有機的なBlob） -->
+    <div class="background-blobs">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
         <div class="blob blob-3"></div>
-        <canvas id="bg-canvas"></canvas>
     </div>
 
     <!-- Header -->
@@ -1467,55 +1426,15 @@
 
         document.addEventListener('DOMContentLoaded', () => {
 
-            // --- Canvas Wave Animation ---
-            const canvas = document.getElementById('bg-canvas');
-            const ctx = canvas.getContext('2d');
-
-            let width, height;
-
-            function resize() {
-                width = window.innerWidth;
-                height = window.innerHeight;
-                canvas.width = width;
-                canvas.height = height;
-            }
-            window.addEventListener('resize', resize);
-            resize();
-
-            // Wave Config
-            const waves = [
-                { y: height * 0.5, length: 0.01, amplitude: 100, speed: 0.02, color: 'rgba(255, 255, 255, 0.3)' },
-                { y: height * 0.5, length: 0.008, amplitude: 120, speed: 0.015, color: 'rgba(255, 215, 0, 0.1)' }, // Goldish
-                { y: height * 0.6, length: 0.005, amplitude: 80, speed: 0.01, color: 'rgba(173, 216, 230, 0.2)' }, // Light Blue
-                // Extra density
-                { y: height * 0.3, length: 0.012, amplitude: 60, speed: 0.025, color: 'rgba(255, 255, 255, 0.15)' },
-                { y: height * 0.4, length: 0.006, amplitude: 90, speed: 0.018, color: 'rgba(230, 230, 250, 0.15)' },
-                { y: height * 0.8, length: 0.004, amplitude: 70, speed: 0.02, color: 'rgba(255, 255, 255, 0.1)' }
-            ];
-
-            let increment = 0;
-
-            function animate() {
-                requestAnimationFrame(animate);
-                ctx.clearRect(0, 0, width, height);
-
-                increment += 0.01;
-
-                waves.forEach((wave, i) => {
-                    ctx.beginPath();
-                    ctx.moveTo(0, height / 2);
-
-                    for (let x = 0; x < width; x++) {
-                        const y = wave.y + Math.sin(x * wave.length + increment * (i + 1) * 0.5) * wave.amplitude * Math.sin(increment * 0.1);
-                        ctx.lineTo(x, y);
-                    }
-
-                    ctx.strokeStyle = wave.color;
-                    ctx.lineWidth = 2;
-                    ctx.stroke();
-                });
-            }
-            animate();
+            // Header Scroll Effect
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
 
             // 4.1 Scroll Interaction (Intersection Observer)
             const observerOptions = {
@@ -1535,36 +1454,6 @@
 
             document.querySelectorAll('.fade-in-up').forEach(el => {
                 observer.observe(el);
-            });
-
-
-            // 4.1 Mouse Parallax for Background Blobs
-            const bgContainer = document.getElementById('bg-container');
-
-            document.addEventListener('mousemove', (e) => {
-                const x = e.clientX / window.innerWidth;
-                const y = e.clientY / window.innerHeight;
-
-                const blobs = bgContainer.querySelectorAll('.blob');
-                blobs.forEach((blob, index) => {
-                    const speed = (index + 1) * 20;
-                    const moveX = (0.5 - x) * speed;
-                    const moveY = (0.5 - y) * speed;
-                    // Note: This parallax is subtle to not interfere with CSS animation significantly
-                    // For stronger effect, we would manipulate the DOM element's position directly
-                    // but keeping it simple to maintain the keyframes flow.
-                });
-            });
-
-
-            // Header Scroll Effect
-            const header = document.getElementById('header');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
             });
 
             // Smooth Scroll
