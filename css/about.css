@@ -1,0 +1,284 @@
+/* --- About Page Specific Styles --- */
+
+.about-page {
+    /* Base styles inherited from main.css */
+}
+
+/* Page Header */
+.page-header {
+    padding: 160px 0 60px;
+    text-align: center;
+}
+
+.page-title {
+    font-family: var(--font-en);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--text-main);
+}
+
+/* Layout Utilities */
+.centered-layout {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Section Title */
+.about-section-title {
+    font-family: var(--font-en);
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+@media (min-width: 768px) {
+    .about-section-title {
+        margin-bottom: 60px;
+    }
+}
+
+/* Mission & Vision Text */
+.about-section-desc p {
+    font-size: 16px;
+    line-height: 2;
+    margin-bottom: 40px;
+    color: var(--text-main);
+    font-weight: 500;
+}
+
+.mission-text-top {
+    font-size: 18px !important;
+    font-weight: 700 !important;
+}
+
+.mission-text-bottom {
+    font-weight: 700 !important;
+}
+
+.vision-large {
+    font-size: clamp(1.5rem, 3vw, 2.2rem) !important;
+    font-weight: 700 !important;
+    line-height: 1.6 !important;
+    letter-spacing: 0.05em;
+}
+
+/* --- Value List --- */
+.value-list {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.value-item {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.value-item-left {
+    flex: 1;
+    text-align: right;
+}
+
+.value-number {
+    font-family: var(--font-en);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 8px;
+}
+
+.value-title-jp {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.value-divider {
+    width: 2px;
+    align-self: stretch;
+    background: #5d8bb3;
+    opacity: 0.5;
+}
+
+.value-item-right {
+    flex: 1;
+    text-align: left;
+}
+
+.value-desc {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-sub);
+}
+
+@media (max-width: 768px) {
+    .value-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        padding-left: 20px;
+        border-left: 2px solid #5d8bb3;
+    }
+
+    .value-divider {
+        display: none;
+    }
+
+    .value-item-left {
+        text-align: left;
+    }
+}
+
+/* --- Style Diagram --- */
+.style-intro {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.8;
+}
+
+.style-diagram-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.style-diagram-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+@media (max-width: 900px) {
+    .style-diagram-box {
+        flex-direction: column;
+        gap: 60px;
+    }
+}
+
+.diagram-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 320px;
+}
+
+.diagram-card {
+    width: 100%;
+    aspect-ratio: 1 / 1.1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px !important;
+    text-align: center;
+    border-radius: 40px !important;
+}
+
+.card-label {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+.card-visual-placeholder {
+    width: 100%;
+    flex: 1;
+    background: #5d8bb3;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+}
+
+.style-btn-black {
+    background: #000;
+    color: #fff;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.style-btn-black:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Center Logo & Arrows */
+.diagram-center {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 200px;
+}
+
+.center-logo {
+    width: 80px;
+    height: 80px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    z-index: 10;
+}
+
+.logo-text {
+    font-family: var(--font-en);
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.interaction-path {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.path-text {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-sub);
+    margin-bottom: 5px;
+}
+
+.interaction-path.bottom .path-text {
+    margin-bottom: 0;
+    margin-top: 5px;
+}
+
+.path-arrow {
+    width: 100%;
+}
+
+@media (max-width: 900px) {
+    .diagram-center {
+        width: 100%;
+        min-width: auto;
+    }
+
+    .path-arrow {
+        width: 60px;
+        transform: rotate(90deg);
+    }
+
+    .interaction-path.bottom .path-arrow {
+        transform: rotate(90deg) scaleX(-1);
+    }
+}
