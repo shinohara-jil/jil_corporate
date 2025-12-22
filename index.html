@@ -150,6 +150,36 @@
             }
         }
 
+        /* --- モバイル版背景の最適化 --- */
+        @media (max-width: 768px) {
+            .blob {
+                filter: blur(60px);
+                opacity: 0.45;
+            }
+
+            .blob-1 {
+                width: 350px;
+                height: 350px;
+                top: -15%;
+                left: -15%;
+            }
+
+            .blob-2 {
+                width: 300px;
+                height: 300px;
+                bottom: -10%;
+                right: -15%;
+            }
+
+            .blob-3 {
+                width: 250px;
+                height: 250px;
+                top: 60%;
+                left: 80%;
+                /* 画面外側に寄せて白場を作る */
+            }
+        }
+
         /* --- 3. Glassmorphism Components --- */
         .glass-card {
             background: var(--card-bg);
