@@ -495,17 +495,6 @@ img {
     z-index: 2;
 }
 
-/* Dot accent */
-.section-title-accent .accent-dot {
-    position: absolute;
-    bottom: 12px;
-    left: calc(50% + 40px);
-    width: 6px;
-    height: 6px;
-    background: #ff9a9e;
-    border-radius: 50%;
-    z-index: 2;
-}
 
 /* --- About Section --- */
 #about {
