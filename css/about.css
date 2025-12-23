@@ -2,41 +2,22 @@
 
 .about-page {
     /* Base styles inherited from main.css */
+    position: relative;
 }
 
-/* Page Header */
-.page-header {
-    padding: 160px 0 60px;
-    text-align: center;
-}
-
-.page-title {
-    font-family: var(--font-en);
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 800;
-    line-height: 1.2;
-    color: var(--text-main);
-}
+/* Page Header Styles are now in main.css */
 
 /* Layout Utilities */
 .centered-layout {
     text-align: center;
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
 /* Section Title */
 .about-section-title {
-    font-family: var(--font-en);
-    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
-    font-weight: 700;
-    margin-bottom: 40px;
-}
-
-@media (min-width: 768px) {
-    .about-section-title {
-        margin-bottom: 60px;
-    }
+    /* Base styles are now in .section-title-accent in main.css */
+    color: var(--text-main);
 }
 
 /* Mission & Vision Text */
