@@ -85,8 +85,7 @@
 }
 
 .value-item-left {
-    flex: 0 0 350px;
-    /* narrowed from 400px */
+    flex: 0 0 420px;
     text-align: left;
 }
 
@@ -98,6 +97,8 @@
     margin-bottom: 12px;
     line-height: 1.1;
     letter-spacing: -0.02em;
+    white-space: nowrap;
+    display: block;
 }
 
 .value-title-jp {
@@ -138,108 +139,201 @@
     }
 }
 
-/* --- Style Diagram Section --- */
+/* --- Style Diagram Section Refinement --- */
 .style-diagram-container {
-    max-width: 1000px;
-    margin: 40px auto 0;
+    max-width: 1200px;
+    margin: 60px auto 0;
 }
 
 .style-diagram-box {
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: space-between;
-    gap: 20px;
+    gap: 0;
 }
 
 .diagram-column {
+    flex: 0 0 460px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 24px;
-    width: 320px;
 }
 
 .diagram-card {
     width: 100%;
-    aspect-ratio: 1 / 1.1;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 30px !important;
-    text-align: center;
-    border-radius: 20px !important;
-    background: rgba(255, 255, 255, 0.8) !important;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03) !important;
-    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+    padding: 60px 50px !important;
+    border-radius: 40px !important;
+    background: #fff !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05) !important;
+    border: none !important;
+    text-align: left;
 }
 
-.card-label {
-    font-size: 16px;
+.card-header-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.card-number {
+    font-family: var(--font-en);
+    font-size: 18px;
+    font-weight: 700;
+    color: #999;
+}
+
+.card-label-en {
+    font-family: var(--font-en);
+    font-size: 18px;
     font-weight: 800;
-    line-height: 1.5;
-    margin-bottom: 20px;
-    color: var(--text-main);
+    color: #999;
+    letter-spacing: 0.05em;
+}
+
+.card-title-jp {
+    font-size: 32px;
+    font-weight: 800;
+    color: #222;
+    line-height: 1.4;
+    margin-bottom: 30px;
+    letter-spacing: -0.01em;
+}
+
+.card-description {
+    font-size: 15px;
+    line-height: 1.9;
+    color: #666;
+    margin-bottom: 40px;
+    letter-spacing: 0.02em;
+}
+
+/* --- Pill Style View More Button --- */
+.style-view-more {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 280px;
+    height: 70px;
+    padding: 0 10px 0 40px;
+    background: #000;
+    border-radius: 35px;
+    text-decoration: none;
+    margin: 40px auto 0;
+    transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.style-view-more .btn-text {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.05em;
+}
+
+.style-view-more .btn-icon {
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.style-view-more .btn-icon i {
+    font-size: 14px;
+    color: #000;
+    transform: rotate(45deg);
+    transition: transform 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.style-view-more:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.style-view-more:hover .btn-icon {
+    transform: rotate(45deg);
+}
+
+.style-view-more:hover .btn-icon i {
+    transform: rotate(45deg) translateY(-2px);
 }
 
 .card-image-wrapper {
+    margin-top: auto;
     width: 100%;
-    flex: 1;
+    aspect-ratio: 16 / 9;
+    background: #eef7fe;
     border-radius: 12px;
-    overflow: hidden;
-    background: #f8fafc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.card-image-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.card-image-wrapper.variant-blue {
+    background: #f4f8ff;
 }
 
-.style-btn-black {
-    display: inline-block;
-    padding: 10px 24px;
-    background: #1a1a1a;
-    color: #fff;
-    font-size: 13px;
+.image-label {
+    font-family: var(--font-en);
+    font-size: 42px;
     font-weight: 700;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: all 0.3s ease;
+    color: #5d8bb3;
+    opacity: 0.6;
 }
 
-.style-btn-black:hover {
-    background: #444;
-    transform: translateY(-2px);
-}
-
-/* Center Logo & Arrows */
+/* --- Refined Arrows & Interaction --- */
 .diagram-center {
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-width: 180px;
+    position: relative;
+    padding: 0 20px;
 }
 
-.center-logo {
-    width: 64px;
-    height: 64px;
+.center-logo-v2 {
+    width: 80px;
+    height: 80px;
     background: #fff;
-    border: 1px solid #dfdfdf;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    z-index: 10;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    margin: 20px 0;
+    z-index: 5;
 }
 
-.logo-text {
-    font-family: var(--font-en);
-    font-size: 24px;
-    font-weight: 800;
+.logo-ring {
+    position: absolute;
+    inset: -5px;
+    border: 1px solid rgba(93, 139, 179, 0.1);
+    border-radius: 50%;
+    animation: pulse-ring 3s infinite;
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.2;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
 }
 
 .interaction-path {
@@ -247,37 +341,134 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px 0;
 }
 
 .path-text {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
-    color: var(--text-sub);
-    margin-bottom: 5px;
+    color: #888;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
 }
 
 .interaction-path.bottom .path-text {
+    margin-top: 12px;
     margin-bottom: 0;
-    margin-top: 5px;
 }
 
-.path-arrow {
+.path-arrow-v2 {
     width: 100%;
+    height: 1px;
+    background: #dfdfdf;
+    position: relative;
+    overflow: visible;
 }
 
-@media (max-width: 900px) {
+.arrow-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, #5d8bb3, transparent);
+    background-size: 200% 100%;
+    animation: flow-line 2s infinite linear;
+}
+
+.arrow-head {
+    position: absolute;
+    right: -2px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-right: 1.5px solid #5d8bb3;
+    border-top: 1.5px solid #5d8bb3;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.path-arrow-v2.reverse .arrow-line {
+    animation-direction: reverse;
+}
+
+.path-arrow-v2.reverse .arrow-head {
+    right: auto;
+    left: -2px;
+    transform: translateY(-50%) rotate(-135deg);
+}
+
+@keyframes flow-line {
+    from {
+        background-position: 200% 0;
+    }
+
+    to {
+        background-position: -200% 0;
+    }
+}
+
+@media (max-width: 1150px) {
+    .diagram-column {
+        flex: 0 0 380px;
+    }
+
+    .card-title-jp {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 960px) {
+    .style-diagram-box {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+    }
+
+    .diagram-column {
+        width: 100%;
+        max-width: 500px;
+        flex: none;
+    }
+
     .diagram-center {
         width: 100%;
-        min-width: auto;
+        padding: 50px 0;
+        /* Expanded from 40px */
     }
 
-    .path-arrow {
-        width: 60px;
-        transform: rotate(90deg);
+    .interaction-path {
+        margin: 20px 0;
+        /* Add margin to avoid overlap with cards */
     }
 
-    .interaction-path.bottom .path-arrow {
-        transform: rotate(90deg) scaleX(-1);
+    .path-arrow-v2 {
+        width: 1px;
+        height: 100px;
+        /* Expanded from 80px to safely avoid overlapping */
+    }
+
+    .arrow-line {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, transparent, #5d8bb3, transparent);
+    }
+
+    .arrow-head {
+        right: 50%;
+        bottom: -2px;
+        top: auto;
+        transform: translateX(50%) rotate(135deg);
+    }
+
+    .path-arrow-v2.reverse .arrow-head {
+        top: -2px;
+        bottom: auto;
+        transform: translateX(50%) rotate(-45deg);
+    }
+
+    .style-view-more {
+        margin: 30px auto 0;
+        width: 100%;
+        max-width: 320px;
     }
 }
