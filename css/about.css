@@ -5,7 +5,41 @@
     position: relative;
 }
 
-/* Page Header Styles are now in main.css */
+/* Page Header Refinement */
+.page-header {
+    background: transparent !important;
+    padding: 220px 0 160px !important;
+    margin-bottom: 0 !important;
+}
+
+.page-header .page-title {
+    position: relative;
+    z-index: 10;
+    font-size: clamp(3.5rem, 8vw, 6rem) !important;
+    letter-spacing: -0.03em !important;
+    background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 50%, #5d8bb3 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+}
+
+/* Background Large Text for Header (Outlined & More Premium) */
+.page-header.section-title-accent::before {
+    font-size: clamp(6rem, 22vw, 16rem) !important;
+    opacity: 0.12 !important;
+    color: transparent !important;
+    -webkit-text-stroke: 1px var(--text-main);
+    letter-spacing: 0.05em !important;
+    top: 45% !important;
+}
+
+.page-header.section-title-accent::after {
+    bottom: 100px !important;
+    width: 100px !important;
+    height: 3px !important;
+    opacity: 0.6;
+}
 
 /* Layout Utilities */
 .centered-layout {
@@ -163,19 +197,53 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 60px 50px !important;
+    padding: 60px 40px !important;
     border-radius: 40px !important;
     background: #fff !important;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05) !important;
     border: none !important;
     text-align: left;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.4s var(--easing);
+}
+
+.diagram-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.08) !important;
 }
 
 .card-header-info {
     display: flex;
     align-items: center;
-    gap: 15px;
+    justify-content: space-between;
     margin-bottom: 30px;
+    width: 100%;
+}
+
+.card-labels {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.card-arrow-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #f8fafc;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    transition: all 0.4s var(--easing);
+}
+
+.diagram-card:hover .card-arrow-icon {
+    background: #000;
+    color: #fff;
+    transform: rotate(45deg);
 }
 
 .card-number {
@@ -210,58 +278,7 @@
     letter-spacing: 0.02em;
 }
 
-/* --- Pill Style View More Button --- */
-.style-view-more {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 280px;
-    height: 70px;
-    padding: 0 10px 0 40px;
-    background: #000;
-    border-radius: 35px;
-    text-decoration: none;
-    margin: 40px auto 0;
-    transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
-}
-
-.style-view-more .btn-text {
-    font-size: 16px;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: 0.05em;
-}
-
-.style-view-more .btn-icon {
-    width: 50px;
-    height: 50px;
-    background: #fff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
-}
-
-.style-view-more .btn-icon i {
-    font-size: 14px;
-    color: #000;
-    transform: rotate(45deg);
-    transition: transform 0.4s cubic-bezier(0.2, 1, 0.3, 1);
-}
-
-.style-view-more:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-}
-
-.style-view-more:hover .btn-icon {
-    transform: rotate(45deg);
-}
-
-.style-view-more:hover .btn-icon i {
-    transform: rotate(45deg) translateY(-2px);
-}
+/* Removed style-view-more as cards are now links */
 
 .card-image-wrapper {
     margin-top: auto;
@@ -442,33 +459,43 @@
     }
 
     .path-arrow-v2 {
-        width: 1px;
-        height: 100px;
-        /* Expanded from 80px to safely avoid overlapping */
+        width: 1.5px;
+        height: 120px;
     }
 
     .arrow-line {
         width: 100%;
         height: 100%;
         background: linear-gradient(180deg, transparent, #5d8bb3, transparent);
+        background-size: 100% 200%;
+        animation: flow-line-v 2s infinite linear;
     }
 
     .arrow-head {
-        right: 50%;
+        left: 50%;
+        right: auto;
         bottom: -2px;
         top: auto;
-        transform: translateX(50%) rotate(135deg);
+        transform: translateX(-50%) rotate(135deg);
+        width: 10px;
+        height: 10px;
     }
 
     .path-arrow-v2.reverse .arrow-head {
         top: -2px;
         bottom: auto;
-        transform: translateX(50%) rotate(-45deg);
+        left: 50%;
+        transform: translateX(-50%) rotate(-45deg);
     }
 
-    .style-view-more {
-        margin: 30px auto 0;
-        width: 100%;
-        max-width: 320px;
+    @keyframes flow-line-v {
+        from {
+            background-position: 0 200%;
+        }
+
+        to {
+            background-position: 0 -200%;
+        }
     }
+
 }
