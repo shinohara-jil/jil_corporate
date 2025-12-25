@@ -5,40 +5,221 @@
     position: relative;
 }
 
-/* Page Header Refinement */
-.page-header {
-    background: transparent !important;
-    padding: 220px 0 160px !important;
-    margin-bottom: 0 !important;
+/* --- Editorial Page Header (Fundamental Redesign) --- */
+.editorial-header {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0 !important;
+    background: #fdfdfd !important;
+    overflow: hidden;
 }
 
-.page-header .page-title {
+.header-visual-elements {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.visual-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.25;
+}
+
+.blob-a {
+    width: 600px;
+    height: 600px;
+    background: linear-gradient(135deg, #ff9a9e 0%, #a18cd1 100%);
+    top: -200px;
+    right: -100px;
+    animation: float-blob 20s infinite alternate-reverse;
+}
+
+.blob-b {
+    width: 500px;
+    height: 500px;
+    background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+    bottom: -150px;
+    left: -100px;
+    animation: float-blob 25s infinite alternate;
+}
+
+@keyframes float-blob {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate(50px, 50px) scale(1.1);
+    }
+}
+
+.visual-line {
+    position: absolute;
+    top: 0;
+    left: 20%;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.08), transparent);
+}
+
+.header-main-flex {
+    display: flex;
+    align-items: flex-start;
+    gap: 60px;
     position: relative;
-    z-index: 10;
-    font-size: clamp(3.5rem, 8vw, 6rem) !important;
-    letter-spacing: -0.03em !important;
-    background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 50%, #5d8bb3 100%);
+    z-index: 5;
+    padding-top: 80px;
+    width: 100%;
+}
+
+.header-left-decor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.decor-tag {
+    writing-mode: vertical-rl;
+    font-family: var(--font-en);
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    font-weight: 700;
+    color: #bbb;
+    transform: rotate(180deg);
+}
+
+.decor-line {
+    width: 1px;
+    height: 100px;
+    background: #000;
+    margin-top: 30px;
+}
+
+.header-content-group {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: 8vw;
+}
+
+.header-title-col {
+    flex: 0 0 auto;
+    padding-left: 10vw;
+}
+
+.header-message-col {
+    flex: 1;
+    padding-bottom: 30px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding-top: 40px;
+    max-width: 540px;
+    position: relative;
+}
+
+.message-accent-line {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 60px;
+    height: 1px;
+    background: #000;
+}
+
+.sub-title-en {
+    display: block;
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 300;
+    color: #999;
+    line-height: 1;
+    margin-bottom: -10px;
+    letter-spacing: -0.02em;
+}
+
+.editorial-title {
+    font-size: clamp(4rem, 12vw, 8rem) !important;
+    font-weight: 800 !important;
+    line-height: 0.9 !important;
+    margin-left: -4px;
+    letter-spacing: -0.05em !important;
+    background: linear-gradient(135deg, #1a1a1a 0%, #444 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-weight: 800;
 }
 
-/* Background Large Text for Header (Outlined & More Premium) */
-.page-header.section-title-accent::before {
-    font-size: clamp(6rem, 22vw, 16rem) !important;
-    opacity: 0.12 !important;
-    color: transparent !important;
-    -webkit-text-stroke: 1px var(--text-main);
-    letter-spacing: 0.05em !important;
-    top: 45% !important;
+.caption-text {
+    font-family: var(--font-en);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #88aadd;
+    text-transform: uppercase;
+    margin-bottom: 20px;
 }
 
-.page-header.section-title-accent::after {
-    bottom: 100px !important;
-    width: 100px !important;
-    height: 3px !important;
-    opacity: 0.6;
+.caption-desc {
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    line-height: 2 !important;
+    color: #555 !important;
+    margin: 0 !important;
+}
+
+.overflow-visible {
+    overflow: visible !important;
+}
+
+@media (max-width: 768px) {
+    .editorial-header {
+        min-height: 70vh;
+        padding-top: 100px !important;
+    }
+
+    .header-main-flex {
+        flex-direction: column;
+        gap: 30px;
+        padding-top: 0;
+    }
+
+    .header-left-decor {
+        flex-direction: row;
+        width: 100%;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .decor-tag {
+        writing-mode: horizontal-tb;
+        transform: none;
+    }
+
+    .decor-line {
+        width: 60px;
+        height: 1px;
+        margin-top: 0;
+    }
+
+    .header-content-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 40px;
+    }
+
+    .header-message-col {
+        padding-top: 30px;
+        width: 100%;
+    }
+
+    .editorial-title {
+        font-size: clamp(5rem, 25vw, 10rem) !important;
+    }
 }
 
 /* Layout Utilities */
