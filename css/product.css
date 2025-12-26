@@ -249,6 +249,19 @@
     align-items: center;
 }
 
+/* Reverse layout for alternating cards */
+.product-item-card.reverse .product-item-content {
+    grid-template-columns: 1fr 2fr;
+}
+
+.product-item-card.reverse .product-item-left {
+    order: 2;
+}
+
+.product-item-card.reverse .product-item-right {
+    order: 1;
+}
+
 /* Left Column - Text Content */
 .product-item-left {
     display: flex;
@@ -370,6 +383,19 @@
     .product-item-content {
         grid-template-columns: 1fr;
         gap: 40px;
+    }
+
+    /* Reset reverse layout on mobile */
+    .product-item-card.reverse .product-item-content {
+        grid-template-columns: 1fr;
+    }
+
+    .product-item-card.reverse .product-item-left {
+        order: 1;
+    }
+
+    .product-item-card.reverse .product-item-right {
+        order: 2;
     }
 
     .product-item-card {
