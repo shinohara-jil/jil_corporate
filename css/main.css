@@ -418,6 +418,13 @@ img {
     /* Reduced from 100px */
 }
 
+/* Specific adjustment for About section top spacing */
+#about {
+    padding-top: 120px;
+    /* Increased to separate from Hero */
+    padding-bottom: 100px;
+}
+
 /* 余白を少し縮小 */
 .container {
     max-width: none;
