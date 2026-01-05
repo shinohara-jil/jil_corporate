@@ -561,9 +561,8 @@ img {
 
 /* --- About Section --- */
 #about {
-    /* トップの余白をさらに詰める */
-    padding-top: 0;
-    /* Reduced from 40px */
+    /* トップの余白を広げる */
+    padding-top: 120px;
 }
 
 .about-content-wrapper {
