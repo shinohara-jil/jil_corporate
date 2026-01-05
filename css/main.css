@@ -278,60 +278,77 @@ img {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* --- Hero Section --- */
+/* --- Hero Section (Image Based) --- */
 .hero {
     position: relative;
-    /* 少し高さを縮めて次のセクションが見えやすくする */
-    min-height: 70vh;
-    /* Reduced from 90vh */
+    width: 100%;
+    height: 100vh;
+    /* Full viewport height */
+    min-height: 600px;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    /* 下部の余白を減らす */
-    padding: 80px 6vw 20px;
-    /* Reduced padding */
+    padding: 0;
+    overflow: hidden;
+    color: #fff;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.hero-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.hero-overlay-dark {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.2) 100%);
 }
 
 .hero-content {
     position: relative;
     z-index: 10;
-    /* Increased z-index for visibility */
-    max-width: 1200px;
     width: 100%;
+    height: 100%;
+    max-width: none;
+    padding: 6vw;
+    display: flex;
+    flex-direction: column;
 }
 
-.hero-title-en {
+.hero-main-copy {
     font-family: var(--font-en);
-    /* font-size: clamp(3rem, 7.5vw, 7rem); -> Adjusted smaller */
-    font-size: clamp(2.5rem, 6vw, 5.5rem);
-    font-weight: 800;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    color: var(--text-main);
-    margin-bottom: 20px;
-    /* Reduced from 40px */
+    font-weight: 300;
+    font-size: clamp(3rem, 9vw, 8rem);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    text-align: center;
+    margin-top: 15vh;
+    width: 100%;
+    color: #fff;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Gradient Text for emphasis */
-.text-gradient {
-    background: linear-gradient(135deg, #1a1a1a 30%, #5d8bb3 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.hero-sub-copy {
+    margin-top: auto;
+    margin-bottom: 80px;
+    color: #fff;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.hero-jp-wrapper {
-    margin-top: 20px;
-    /* Reduced from 40px */
-    padding-left: 0;
-    /* Removed padding */
-    border-left: none;
-    /* Removed border */
-}
-
-.hero-title-jp {
-    font-size: clamp(1rem, 1.8vw, 1.4rem);
+.hero-sub-copy p {
+    font-size: clamp(0.9rem, 1.5vw, 1.25rem);
     font-weight: 500;
-    color: var(--text-main);
     line-height: 1.8;
 }
 
@@ -345,15 +362,32 @@ img {
     font-family: var(--font-en);
     font-size: 12px;
     font-weight: 700;
-    color: var(--text-sub);
-    transform: rotate(-90deg);
+    color: #fff;
+    transform: none;
+    /* Reset rotation */
     transform-origin: left bottom;
+    z-index: 10;
 }
 
 .scroll-line {
-    width: 50px;
+    width: 60px;
     height: 1px;
-    background: var(--text-sub);
+    background: #fff;
+}
+
+@media (max-width: 768px) {
+    .hero-bg-img {
+        object-position: 70% center;
+    }
+
+    .hero-main-copy {
+        margin-top: 20vh;
+        font-size: clamp(2.5rem, 12vw, 4rem);
+    }
+
+    .hero-sub-copy {
+        margin-bottom: 60px;
+    }
 }
 
 /* --- Section Common --- */
