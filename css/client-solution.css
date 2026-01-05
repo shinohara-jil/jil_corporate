@@ -1,102 +1,196 @@
 /* Client Solution Page Specific Styles */
+/* Reuse product.css variables where possible, but define overrides here */
 
 /* --- Layout Wrappers --- */
 .solution-section {
     padding: 100px 0;
     position: relative;
     background: transparent !important;
-    /* Force transparent */
 }
 
-/* --- Header Adjustment (Matching 'Own Product' Reference) --- */
-.page-header.client-solution-header {
-    background-color: #fcfbf9;
+/* --- Header Adjustment (Matching 'Own Product' Exactly) --- */
+.client-solution-header {
+    background-color: #fdfdfd;
+    min-height: 75vh;
+    padding: 0;
+    display: flex;
+    align-items: center;
 }
 
-@media (min-width: 900px) {
-    .client-solution-header .header-content-group {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        justify-content: space-between;
-        width: 100%;
-        gap: 30px;
-        /* Reduced gap to allow title to expand */
-    }
-
-    .client-solution-header .header-title-col {
-        flex: 1;
-        /* Allow title to take up remaining space */
-        max-width: none;
-        /* Remove loose constraints */
-        text-align: left;
-    }
-
-    .client-solution-header .header-message-col {
-        flex: 0 0 450px;
-        /* Fixed width for description */
-        max-width: 450px;
-    }
-}
-
-/* Title Styling */
-.client-solution-header .page-title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    /* Restored to be larger but with layout fixes */
-    line-height: 1.1;
-    color: #1a1a1a;
-    margin-bottom: 0;
-    word-break: normal;
-    /* Don't break words eagerly */
-    overflow-wrap: break-word;
-    /* Only break if necessary */
+.client-solution-header .header-main-flex {
+    display: flex;
+    align-items: flex-start;
+    gap: 60px;
+    position: relative;
+    z-index: 5;
+    padding-top: 80px;
     width: 100%;
+}
+
+.client-solution-header .header-left-decor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.client-solution-header .decor-tag {
+    writing-mode: vertical-rl;
+    font-family: var(--font-en);
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    font-weight: 700;
+    color: #bbb;
+    transform: rotate(180deg);
+}
+
+.client-solution-header .decor-line {
+    width: 1px;
+    height: 100px;
+    background: #000;
+    margin-top: 30px;
+}
+
+/* Same ratio as product.css */
+.client-solution-header .header-content-group {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8vw;
+    /* MATCHED */
+}
+
+/* Title Column - Fixed (Auto) Width */
+.client-solution-header .header-title-col {
+    flex: 0 0 auto;
+    /* MATCHED product.css */
+    padding-left: 5vw;
+    /* MATCHED */
+    text-align: left;
 }
 
 .client-solution-header .sub-title-en {
     display: block;
-    font-size: 1.5rem;
-    color: #999;
-    margin-bottom: 5px;
-    font-weight: 400;
-}
-
-/* Right Side Description Styling */
-.client-solution-header .caption-text {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 300;
+    color: #aaa;
+    line-height: 1;
+    margin-bottom: -5px;
+    letter-spacing: -0.02em;
     font-family: var(--font-en);
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: #5d8bb3;
-    /* Blue accent title */
-    margin-bottom: 20px;
-    display: block;
+}
+
+.client-solution-header .page-title {
+    /* MATCHED product.css exactly */
+    font-size: clamp(4rem, 10vw, 7rem) !important;
+    font-weight: 800 !important;
+    line-height: 0.9 !important;
+    margin-left: -4px;
+    letter-spacing: -0.05em !important;
+    color: #1a1a1a;
+    font-family: var(--font-en);
+}
+
+/* Message Column - Flex 1 (Fills Rest) */
+.client-solution-header .header-message-col {
+    flex: 1;
+    /* MATCHED */
+    padding-bottom: 30px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    /* Top border line */
+    padding-top: 40px;
+    max-width: 600px;
+    /* MATCHED */
     position: relative;
-    padding-top: 20px;
-}
-
-.client-solution-header .caption-text::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 60px;
-    height: 2px;
-    background: #5d8bb3;
-}
-
-.client-solution-header .caption-desc {
-    font-size: 0.95rem;
-    line-height: 2;
-    color: var(--text-sub);
     text-align: left;
 }
 
 .client-solution-header .message-accent-line {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 80px;
+    height: 1px;
+    background: #5d8bb3;
+    display: block !important;
+}
+
+.client-solution-header .caption-text {
+    font-family: var(--font-en);
+    font-weight: 700;
+    font-size: 20px;
+    /* MATCHED */
+    color: #5d8bb3;
+    margin-bottom: 25px;
+    /* MATCHED */
+    letter-spacing: 0.05em;
+    display: block;
+    padding-top: 0;
+}
+
+.client-solution-header .caption-text::before {
     display: none;
 }
 
+.client-solution-header .caption-desc {
+    font-size: 15px !important;
+    /* MATCHED product.css with !important overrides */
+    font-weight: 500 !important;
+    line-height: 2 !important;
+    color: #666 !important;
+    margin: 0 !important;
+    text-align: left;
+}
 
-/* --- 3-Phase Flow Diagram (0-1, 1-10, 10-100) --- */
+
+/* --- Responsive Header --- */
+@media (max-width: 900px) {
+    .client-solution-header .header-main-flex {
+        flex-direction: column;
+        gap: 30px;
+        padding-top: 40px;
+    }
+
+    .client-solution-header .header-left-decor {
+        flex-direction: row;
+        width: 100%;
+        gap: 20px;
+    }
+
+    .client-solution-header .decor-tag {
+        writing-mode: horizontal-tb;
+        transform: none;
+    }
+
+    .client-solution-header .decor-line {
+        width: 60px;
+        height: 1px;
+        margin-top: 0;
+    }
+
+    .client-solution-header .header-content-group {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .client-solution-header .header-title-col {
+        padding-left: 0;
+    }
+
+    .client-solution-header .page-title {
+        font-size: clamp(3rem, 15vw, 6rem) !important;
+    }
+
+    .client-solution-header .header-message-col {
+        width: 100%;
+        max-width: none;
+        padding-top: 30px;
+    }
+}
+
+
+/* --- 3-Phase Flow Diagram --- */
 .flow-diagram-wrapper {
     margin-top: 80px;
     width: 100%;
@@ -109,7 +203,7 @@
     display: none !important;
 }
 
-/* Existing Flow Styles (omitted for brevity, assume they inherit from main.css or previous file if not overwritten, but let's keep them safe) */
+/* Existing Flow Styles preserved */
 .flow-header-bar {
     text-align: center;
     margin-bottom: 40px;
@@ -183,7 +277,6 @@
 .solution-grid {
     display: grid;
     grid-template-columns: 1fr;
-    /* Mobile: 1 col */
     gap: 40px;
     margin-top: 60px;
 }
@@ -191,15 +284,14 @@
 @media (min-width: 600px) {
     .solution-grid {
         grid-template-columns: repeat(2, 1fr);
-        /* Tablet: 2 cols */
     }
 }
 
 @media (min-width: 1100px) {
     .solution-grid {
         grid-template-columns: repeat(4, 1fr);
-        /* Desktop: 4 cols */
         gap: 24px;
+        align-items: stretch;
     }
 }
 
@@ -208,47 +300,54 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    /* Gap between Header and Cards */
+    height: 100%;
 }
 
-/* Column Header (Icon + Title) */
+/* Column Header (Icon + Title) - Slightly reduced height logic to be tighter */
 .column-header {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* We still want some min-height to align cards if title wraps on narrower screens, 
+       but user requested 1-line look. Let's keep a safe min-height for the icon+text block. */
+    min-height: 80px;
 }
 
 .column-icon-box {
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    /* Slightly smaller icon to help space */
+    height: 44px;
     background: #333;
-    /* Dark icon bg */
     color: #fff;
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .column-title {
-    font-size: 1.1rem;
+    font-size: 1.0rem;
+    /* reduced from 1.1 with no BR for fit */
     font-weight: 700;
     color: var(--text-main);
     line-height: 1.4;
     margin: 0;
 }
 
-/* Unit Cards (Standard & With AI) */
+/* Unit Cards */
 .solution-unit-card {
     border-radius: 16px;
     padding: 24px;
     border: 1px solid transparent;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    min-height: 140px;
+    justify-content: flex-start;
     transition: transform 0.2s, box-shadow 0.2s;
+    min-height: 140px;
 }
 
 .solution-unit-card:hover {
@@ -261,19 +360,19 @@
     background: #fff;
     border-color: #eee;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.02);
+    /* Flex grow to push AI card down */
+    flex: 1;
 }
 
 /* With AI Style */
 .solution-unit-card.with-ai {
     background: #f4f9ff;
-    /* Very light blue bg */
     border-color: #dbeafe;
-    /* Light blue border */
+    flex: 0 0 auto;
 }
 
-/* Label Inside Unit Card */
 .unit-label {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     font-weight: 800;
     color: #999;
     letter-spacing: 0.05em;
@@ -284,12 +383,10 @@
 
 .solution-unit-card.with-ai .unit-label {
     color: #5d8bb3;
-    /* Accent blue text */
 }
 
-/* Content Inside Unit Card */
 .unit-desc {
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 700;
     line-height: 1.5;
     color: var(--text-main);
