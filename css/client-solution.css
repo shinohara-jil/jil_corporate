@@ -3,7 +3,8 @@
 
 /* --- Layout Wrappers --- */
 .solution-section {
-    padding: 100px 0;
+    padding: 60px 0;
+    /* Reduced from 100px */
     position: relative;
     background: transparent !important;
 }
@@ -192,10 +193,12 @@
 
 /* --- 3-Phase Flow Diagram --- */
 .flow-diagram-wrapper {
-    margin-top: 80px;
+    margin-top: 40px;
+    /* Reduced from 80px */
     width: 100%;
     position: relative;
-    padding: 40px 20px;
+    padding: 20px;
+    /* Reduced from 40px 20px */
     background: transparent !important;
 }
 
@@ -206,7 +209,8 @@
 /* Existing Flow Styles preserved */
 .flow-header-bar {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 25px;
+    /* Reduced from 40px */
     font-weight: 700;
     color: var(--text-main);
     background: #fff;
@@ -277,8 +281,10 @@
 .solution-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 40px;
-    margin-top: 60px;
+    gap: 30px;
+    /* Reduced gaps slightly */
+    margin-top: 40px;
+    /* Reduced from 60px */
 }
 
 @media (min-width: 600px) {
