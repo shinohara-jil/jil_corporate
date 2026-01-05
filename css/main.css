@@ -287,9 +287,10 @@ img {
     min-height: 600px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    /* Changed from center to allow top positioning */
-    align-items: center;
+    justify-content: center;
+    /* Vertically center everything */
+    align-items: flex-start;
+    /* Left align */
     padding: 0;
     overflow: hidden;
     color: #fff;
@@ -323,39 +324,38 @@ img {
     height: 100%;
     max-width: none;
     padding: 6vw;
-    padding-top: 12vh;
-    /* Position text much higher (approx top 12%) */
+    padding-top: 0;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    /* True vertical centering for the H1 */
 }
 
-/* Main Copy (JAPAN IS LOVELY) - Top Centerish/Large */
+/* Main Copy - Bold, Left Aligned */
 .hero-main-copy {
-    font-family: 'Outfit', var(--font-en);
-    /* Switch to Outfit for premium feel */
-    font-weight: 200;
-    /* Extra Light */
-    font-size: clamp(3rem, 10vw, 8rem);
-    line-height: 1;
-    letter-spacing: 0.15em;
-    /* Elegant wide tracking */
-    text-align: center;
-    margin-top: 0;
+    font-family: var(--font-en);
+    font-weight: 800;
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    text-align: left;
+    margin: 0;
+    /* Align perfectly in flex center */
     width: 100%;
     color: #fff;
-    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
-/* Sub Copy (Japanese) - Bottom Left */
+/* Sub Copy (Japanese) - Absolute Bottom Left */
 .hero-sub-copy {
-    margin-top: auto;
-    /* Pushes to bottom */
-    margin-bottom: 80px;
-    /* Space for scroll indicator */
+    position: absolute;
+    bottom: 120px;
+    /* Position above the scroll indicator */
+    left: 6vw;
+    margin: 0;
     color: #fff;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    /* Ensure left alignment stays consistent */
-    width: 100%;
+    width: auto;
     text-align: left;
 }
 
