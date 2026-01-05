@@ -329,35 +329,44 @@ img {
     flex-direction: column;
 }
 
+/* Main Copy (JAPAN IS LOVELY) - Top Centerish/Large */
 .hero-main-copy {
-    font-family: var(--font-en);
-    font-weight: 300;
-    /* Increased size and tracking to make it wider */
-    font-size: clamp(3.5rem, 11vw, 8.5rem);
+    font-family: 'Outfit', var(--font-en);
+    /* Switch to Outfit for premium feel */
+    font-weight: 200;
+    /* Extra Light */
+    font-size: clamp(3rem, 10vw, 8rem);
     line-height: 1;
-    letter-spacing: 0.1em;
-    /* Widen the text */
+    letter-spacing: 0.15em;
+    /* Elegant wide tracking */
     text-align: center;
     margin-top: 0;
-    /* Removing previous top margin */
     width: 100%;
     color: #fff;
     text-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Sub Copy (Japanese) - Bottom Left */
 .hero-sub-copy {
     margin-top: auto;
+    /* Pushes to bottom */
     margin-bottom: 80px;
+    /* Space for scroll indicator */
     color: #fff;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* Ensure left alignment stays consistent */
+    width: 100%;
+    text-align: left;
 }
 
 .hero-sub-copy p {
-    font-size: clamp(0.9rem, 1.5vw, 1.25rem);
+    font-size: clamp(0.85rem, 1.5vw, 1.25rem);
     font-weight: 500;
-    line-height: 1.8;
+    line-height: 2;
+    letter-spacing: 0.05em;
 }
 
+/* Scroll Indicator Update for White Background */
 .scroll-indicator {
     position: absolute;
     bottom: 40px;
@@ -365,30 +374,37 @@ img {
     display: flex;
     align-items: center;
     gap: 16px;
-    font-family: var(--font-en);
+    font-family: 'Outfit', var(--font-en);
+    /* Match hero font */
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 600;
     color: #fff;
+    /* White */
     transform: none;
     /* Reset rotation */
     transform-origin: left bottom;
     z-index: 10;
+    letter-spacing: 0.1em;
 }
 
 .scroll-line {
     width: 60px;
     height: 1px;
     background: #fff;
+    /* White */
 }
 
+/* Responsive Tweaks */
 @media (max-width: 768px) {
     .hero-bg-img {
         object-position: 70% center;
     }
 
+    /* Mobile: Keep layout same as PC (Top aligned, not centered vertically) */
     .hero-main-copy {
-        margin-top: 20vh;
-        font-size: clamp(2.5rem, 12vw, 4rem);
+        /* Scale down font size automatically via clamp, no manual override needed */
+        /* margin-top: 0; inherits */
+        /* text-align: center; inherits */
     }
 
     .hero-sub-copy {
