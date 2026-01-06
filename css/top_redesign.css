@@ -1,0 +1,110 @@
+/* Top Page Redesign - Modern Section Headers */
+
+/* 
+   Concept: "Modern Editorial Vertical"
+   - A clean, sophisticated design that doesn't rely on large background text.
+   - Uses a vertical gradient accent bar as a visual anchor.
+   - Combines a small, tracking-heavy label with a large, bold title.
+*/
+
+.section-header-modern {
+    display: flex;
+    align-items: flex-end;
+    gap: 25px;
+    margin-bottom: 70px;
+    /* Generous spacing */
+    position: relative;
+    padding-left: 5px;
+    /* Visual balance */
+}
+
+/* The Vertical Accent Bar */
+.modern-accent-bar {
+    width: 6px;
+    height: 75px;
+    background: linear-gradient(to bottom, #1a1a1a 0%, #5d8bb3 100%);
+    border-radius: 10px;
+    transform-origin: bottom;
+    animation: bar-grow 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+@keyframes bar-grow {
+    from {
+        transform: scaleY(0);
+    }
+
+    to {
+        transform: scaleY(1);
+    }
+}
+
+.modern-text-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 6px;
+}
+
+/* Small Label (e.g. "01 / ABOUT") */
+.modern-label {
+    font-family: var(--font-en);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    /* Premium feel */
+    color: #999;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modern-label-num {
+    color: #5d8bb3;
+    /* Accent color for number */
+    font-weight: 800;
+}
+
+/* Main Title */
+.modern-title {
+    font-family: var(--font-en);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    color: var(--text-main);
+    background: linear-gradient(90deg, #1a1a1a 0%, #333 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* Fallback for readability */
+    color: #1a1a1a;
+}
+
+/* Optional: Add a subtle Japanese sub-title if needed, 
+   but for now user asked for "About JIL etc" update */
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .section-header-modern {
+        gap: 15px;
+        /* Tighter gap on mobile */
+        margin-bottom: 50px;
+        align-items: flex-start;
+        /* Align top on mobile? No, bottom is better for text */
+    }
+
+    .modern-accent-bar {
+        height: 60px;
+        /* Slightly shorter */
+        width: 4px;
+    }
+
+    .modern-title {
+        font-size: 2.5rem;
+        /* Readable size */
+    }
+
+    .modern-label {
+        font-size: 11px;
+    }
+}
