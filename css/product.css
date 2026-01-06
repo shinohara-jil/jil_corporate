@@ -555,6 +555,8 @@
 @media (max-width: 768px) {
     .editorial-header {
         min-height: auto !important;
+        padding-top: 100px !important;
+        /* Added to prevent overlap */
         padding-bottom: 80px !important;
     }
 

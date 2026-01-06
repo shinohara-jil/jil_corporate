@@ -61,26 +61,21 @@ function initComponents() {
                     </button>
                 </div>
 
-                <!-- Mobile Menu Overlay -->
                 <div class="mobile-menu" id="mobile-menu">
                     <nav class="mobile-nav">
                         <div class="mobile-nav-item-group">
-                            <span class="mobile-nav-label">About</span>
-                            <a href="about.html#about-mission" class="mobile-sub-link">Mission / Vision / Value</a>
-                            <a href="about.html#about-style" class="mobile-sub-link">Style</a>
+                            <a href="about.html" class="mobile-nav-label-link">ABOUT</a>
                         </div>
                         <div class="mobile-nav-item-group">
-                            <span class="mobile-nav-label">Service</span>
-                            <a href="client-solution.html" class="mobile-sub-link">Client solution</a>
-                            <a href="product.html" class="mobile-sub-link">Product</a>
+                            <span class="mobile-nav-label">SERVICE</span>
+                            <a href="client-solution.html" class="mobile-sub-link">CLIENT SOLUTION</a>
+                            <a href="product.html" class="mobile-sub-link">PRODUCT</a>
                         </div>
                         <div class="mobile-nav-item-group">
-                            <span class="mobile-nav-label">Team</span>
-                            <a href="member.html#board-member" class="mobile-sub-link">Board Member</a>
-                            <a href="member.html#team-member" class="mobile-sub-link">Team Member</a>
+                            <a href="member.html" class="mobile-nav-label-link">TEAM</a>
                         </div>
                         <div class="mobile-nav-item-group">
-                            <a href="index.html#organization" class="mobile-nav-label-link">info</a>
+                            <a href="index.html#organization" class="mobile-nav-label-link">INFO</a>
                         </div>
                     </nav>
                 </div>
