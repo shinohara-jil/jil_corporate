@@ -241,6 +241,7 @@
 
 .flow-step-header {
     background: #333;
+    /* Fallback */
     color: #fff;
     text-align: center;
     padding: 14px 0;
@@ -249,6 +250,13 @@
     font-weight: 800;
     margin-bottom: 24px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.flow-step-header.phase-01,
+.flow-step-header.phase-02,
+.flow-step-header.phase-03 {
+    background: #1a1a1a;
+    /* Reverted to consistent dark color */
 }
 
 .flow-content-box {
@@ -359,10 +367,7 @@
     min-height: 140px;
 }
 
-.solution-unit-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-}
+
 
 /* Standard Support Style */
 .solution-unit-card.standard {
@@ -391,7 +396,19 @@
 }
 
 .solution-unit-card.with-ai .unit-label {
+    background: #eef2f6;
+    /* Very subtle blue-gray */
     color: #5d8bb3;
+    /* Brand blue text */
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    width: fit-content;
+    /* Ensure it doesn't stretch too wide */
+    letter-spacing: 0.1em;
+    font-size: 0.7rem;
+    border: 1px solid #dbeafe;
 }
 
 .unit-desc {
