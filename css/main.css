@@ -207,8 +207,9 @@ img {
 .logo {
     font-family: var(--font-en);
     font-weight: 800;
-    font-size: 24px;
-    letter-spacing: 0.02em;
+    font-size: 22px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
     color: var(--text-main);
     transition: color 0.4s;
     z-index: 2000;
@@ -254,11 +255,13 @@ img {
 
 .nav-item {
     font-family: var(--font-en);
-    font-size: 16px;
-    /* Increased from 14px */
-    font-weight: 700;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
     color: var(--text-main);
     position: relative;
+    transition: color 0.3s;
 }
 
 .nav-item::after {
@@ -331,24 +334,33 @@ img {
 .btn-contact {
     background-color: var(--text-main);
     color: #fff;
-    padding: 12px 28px;
-    font-size: 13px;
+    padding: 10px 24px;
+    font-size: 11px;
     font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
     font-family: var(--font-en);
-    border-radius: 50px;
-    transition: transform 0.3s var(--easing), box-shadow 0.3s;
+    border-radius: 2px;
+    transition: all 0.3s var(--easing);
     cursor: pointer;
-    border: none;
+    border: 1px solid var(--text-main);
 }
 
 .header.header-initial-white .btn-contact {
+    background-color: transparent;
+    border-color: #fff;
+    color: #fff;
+}
+
+.btn-contact:hover {
     background-color: #fff;
     color: var(--text-main);
 }
 
-.btn-contact:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+.header.header-initial-white .btn-contact:hover {
+    background-color: #fff;
+    color: var(--text-main);
+    border-color: #fff;
 }
 
 /* Hamburger Button */
@@ -440,14 +452,18 @@ img {
 
 .mobile-nav-label-link {
     font-family: var(--font-en);
-    font-size: 28px;
+    font-size: 22px;
     font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     color: var(--text-main);
 }
 
 .mobile-sub-link {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     color: var(--text-main);
     transition: color 0.3s;
 }
