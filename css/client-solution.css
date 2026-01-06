@@ -86,8 +86,11 @@
     line-height: 0.9 !important;
     margin-left: -4px;
     letter-spacing: -0.05em !important;
-    color: #1a1a1a;
     font-family: var(--font-en);
+    background: linear-gradient(135deg, #1a1a1a 0%, #5d8bb3 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 /* Message Column - Flex 1 (Fills Rest) */
