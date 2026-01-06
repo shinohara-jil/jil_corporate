@@ -179,7 +179,8 @@
     position: relative;
     font-size: 3rem;
     font-weight: 800;
-    margin-bottom: 80px;
+    margin-bottom: 40px;
+    /* Reduced from 80px */
     text-align: center;
     color: var(--text-main);
 }
@@ -232,6 +233,12 @@
     align-items: center;
     justify-content: center;
     border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.member-photo-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .member-photo-placeholder {
@@ -299,7 +306,8 @@
     display: flex;
     align-items: center;
     gap: 40px;
-    padding: 60px 0;
+    padding: 20px 0 60px;
+    /* Reduced top padding from 60px to 20px */
 }
 
 .team-left-visual {
@@ -453,15 +461,7 @@
     transform: rotate(210deg) translateY(calc(var(--orbit-radius) * -1)) rotate(-210deg);
 }
 
-.orbit-role:hover {
-    border-color: #5d8bb3;
-    z-index: 20;
-    box-shadow: 0 15px 50px rgba(93, 139, 179, 0.15);
-}
-
-.orbit-role:hover span {
-    color: #5d8bb3;
-}
+/* Orbit node hover removed as requested */
 
 /* Point Item Styling */
 .point-item {
@@ -474,14 +474,14 @@
 
 .point-label {
     display: inline-block;
-    padding: 6px 14px;
-    background: #5d8bb3;
-    color: #fff;
-    font-weight: 800;
-    font-size: 0.8rem;
-    border-radius: 6px;
+    padding: 6px 16px;
+    background: rgba(93, 139, 179, 0.1);
+    color: #5d8bb3;
+    font-weight: 700;
+    font-size: 0.85rem;
+    border-radius: 20px;
     margin-bottom: 20px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
 }
 
 .point-text {
@@ -615,14 +615,20 @@
 
     .header-main-flex {
         flex-direction: column;
+        align-items: center;
+        /* Center horizontally */
         gap: 30px;
         padding-top: 40px;
+        text-align: center;
+        /* Center children text */
     }
 
     .header-left-decor {
         flex-direction: row;
         width: 100%;
         align-items: center;
+        justify-content: center;
+        /* Center horizontally */
         gap: 20px;
     }
 
@@ -639,23 +645,38 @@
 
     .header-content-group {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        /* Center horizontally */
         gap: 40px;
+        text-align: center;
     }
 
     .header-title-col {
         padding-left: 0;
         flex: none !important;
         width: 100%;
+        text-align: center;
     }
 
     .header-message-col {
         padding-top: 30px;
         width: 100%;
+        text-align: center;
+    }
+
+    .message-accent-line {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .caption-desc {
+        text-align: center !important;
     }
 
     .member-section-title {
         font-size: 2.2rem;
+        margin-bottom: 30px;
+        /* Further reduction for mobile */
     }
 
     .member-section-title::before {
@@ -671,13 +692,26 @@
     }
 
     .team-orbit-diagram {
-        transform: scale(0.65);
-        transform-origin: center center;
-        margin: -60px 0;
+        /* Replaced scale(0.65) with variable adjustments to keep text readable */
+        --orbit-size: 380px;
+        --node-size: 90px;
+        --center-size: 160px;
+        --orbit-radius: 140px;
+        margin: 20px 0;
+    }
+
+    .orbit-role span {
+        font-size: 0.75rem;
+        /* Slight reduction but much larger than scaled global version */
+        padding: 5px;
+    }
+
+    .core-text p {
+        font-size: 0.9rem;
     }
 
     .team-diagram-cluster-wrapper {
-        min-height: 320px;
+        min-height: 400px;
     }
 
     .contact-cta {
@@ -695,13 +729,19 @@
 
 @media (max-width: 480px) {
     .team-orbit-diagram {
-        transform: scale(0.5);
-        /* Scale more on very small screens */
-        margin: -100px 0;
+        /* Further reduction for small mobiles */
+        --orbit-size: 300px;
+        --node-size: 75px;
+        --center-size: 130px;
+        --orbit-radius: 110px;
+    }
+
+    .orbit-role span {
+        font-size: 0.65rem;
     }
 
     .team-diagram-cluster-wrapper {
-        min-height: 250px;
+        min-height: 320px;
     }
 
     .core-text p {

@@ -153,13 +153,19 @@
 
     .client-solution-header .header-main-flex {
         flex-direction: column;
+        align-items: center;
+        /* Center horizontally */
         gap: 30px;
         padding-top: 40px;
+        text-align: center;
+        /* Center children text */
     }
 
     .client-solution-header .header-left-decor {
         flex-direction: row;
         width: 100%;
+        justify-content: center;
+        /* Center horizontally */
         gap: 20px;
     }
 
@@ -176,13 +182,17 @@
 
     .client-solution-header .header-content-group {
         flex-direction: column;
+        align-items: center;
+        /* Center horizontally */
         gap: 40px;
+        text-align: center;
     }
 
     .client-solution-header .header-title-col {
         padding-left: 0;
         flex: none !important;
         width: 100%;
+        text-align: center;
     }
 
     .client-solution-header .page-title {
@@ -193,6 +203,16 @@
         width: 100%;
         max-width: none;
         padding-top: 30px;
+        text-align: center;
+    }
+
+    .client-solution-header .message-accent-line {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .client-solution-header .caption-desc {
+        text-align: center !important;
     }
 }
 

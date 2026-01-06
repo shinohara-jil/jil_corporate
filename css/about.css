@@ -183,14 +183,19 @@
 
     .header-main-flex {
         flex-direction: column;
+        align-items: center;
+        /* Center horizontally */
         gap: 30px;
         padding-top: 0;
+        text-align: center;
+        /* Center children text */
     }
 
     .header-left-decor {
         flex-direction: row;
         width: 100%;
-        align-items: center;
+        justify-content: center;
+        /* Center horizontally */
         gap: 20px;
     }
 
@@ -207,19 +212,32 @@
 
     .header-content-group {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        /* Center horizontally */
         gap: 40px;
+        text-align: center;
     }
 
     .header-title-col {
         padding-left: 0;
         flex: none !important;
         width: 100%;
+        text-align: center;
     }
 
     .header-message-col {
         padding-top: 30px;
         width: 100%;
+        text-align: center;
+    }
+
+    .message-accent-line {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .caption-desc {
+        text-align: center !important;
     }
 
     .editorial-title {
