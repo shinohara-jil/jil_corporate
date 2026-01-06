@@ -481,24 +481,22 @@
     margin-top: auto;
     width: 100%;
     aspect-ratio: 16 / 9;
-    background: #eef7fe;
     border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow: hidden;
 }
 
-.card-image-wrapper.variant-blue {
-    background: #f4f8ff;
+.card-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--easing);
 }
 
-.image-label {
-    font-family: var(--font-en);
-    font-size: 42px;
-    font-weight: 800;
-    color: #5d8bb3;
-    opacity: 0.8;
+.diagram-card:hover .card-image-wrapper img {
+    transform: scale(1.05);
 }
+
+/* .image-label related styles can be removed or kept for fallback, but effectively replaced by img */
 
 /* --- Refined Arrows & Interaction --- */
 .diagram-center {
