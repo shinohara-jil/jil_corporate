@@ -873,8 +873,7 @@ img {
 
 .mission-text p:last-child {
     margin-bottom: 0;
-    font-size: 18px;
-    /* Emphasis final pargraph */
+    /* font-size: 18px removed to match others */
     background: linear-gradient(90deg, #1a1a1a, #5d8bb3);
     background-clip: text;
     -webkit-background-clip: text;
@@ -1363,4 +1362,17 @@ img {
 .org-image-link-wrapper:hover .org-btn-label {
     background: #fff;
     color: var(--text-main);
+}
+
+/* Utility Classes for Responsive Line Breaks */
+@media (max-width: 768px) {
+    .pc-only {
+        display: none !important;
+    }
+}
+
+@media (min-width: 769px) {
+    .sp-only {
+        display: none !important;
+    }
 }

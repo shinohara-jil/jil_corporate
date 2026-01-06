@@ -54,7 +54,7 @@ function initComponents() {
                 </nav>
 
                 <div class="header-right">
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdAXunAozpcLmemfDljHNJKcEWXTtktF8tV6RECRALBNyaGhQ/viewform?usp=publish-editor" class="btn-contact">CONTACT</a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdAXunAozpcLmemfDljHNJKcEWXTtktF8tV6RECRALBNyaGhQ/viewform?usp=publish-editor" class="btn-contact" target="_blank" rel="noopener noreferrer">CONTACT</a>
                     <button class="hamburger-btn" id="hamburger-btn" aria-label="Menu">
                         <span></span>
                         <span></span>
