@@ -24,10 +24,28 @@ function initComponents() {
                 <a href="index.html" class="logo">JIL</a>
                 <nav class="nav">
                     <ul class="nav-list">
-                        <li><a href="index.html#about" class="nav-item">About</a></li>
-                        <li><a href="index.html#service" class="nav-item">Service</a></li>
-                        <li><a href="index.html#organization" class="nav-item">Organization</a></li>
-                        <li><a href="index.html#contact" class="nav-item">info</a></li>
+                        <li class="nav-item-group">
+                            <a href="about.html" class="nav-item">About</a>
+                            <ul class="nav-sub-list">
+                                <li><a href="about.html#about-mission">Mission / Vision / Value</a></li>
+                                <li><a href="about.html#about-style">Style</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item-group">
+                            <a href="client-solution.html" class="nav-item">Service</a>
+                            <ul class="nav-sub-list">
+                                <li><a href="client-solution.html">Client solution</a></li>
+                                <li><a href="product.html">Product</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item-group">
+                            <a href="member.html" class="nav-item">Team</a>
+                            <ul class="nav-sub-list">
+                                <li><a href="member.html#board-member">Board Member</a></li>
+                                <li><a href="member.html#team-member">Team Member</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="index.html#organization" class="nav-item">info</a></li>
                     </ul>
                 </nav>
                 <a href="index.html#contact" class="btn-contact">CONTACT</a>
@@ -53,10 +71,24 @@ function initComponents() {
                 <div class="footer-content">
                     <a href="index.html" class="footer-logo">JIL</a>
                     <nav class="footer-nav">
-                        <a href="index.html#about" class="footer-link">About</a>
-                        <a href="index.html#service" class="footer-link">Service</a>
-                        <a href="index.html#organization" class="footer-link">Organization</a>
-                        <a href="index.html#contact" class="footer-link">info</a>
+                        <div class="footer-nav-col">
+                            <a href="about.html" class="footer-link">About</a>
+                            <a href="about.html#about-mission" class="footer-sub-link">Mission / Vision / Value</a>
+                            <a href="about.html#about-style" class="footer-sub-link">Style</a>
+                        </div>
+                        <div class="footer-nav-col">
+                            <a href="client-solution.html" class="footer-link">Service</a>
+                            <a href="client-solution.html" class="footer-sub-link">Client solution</a>
+                            <a href="product.html" class="footer-sub-link">Product</a>
+                        </div>
+                        <div class="footer-nav-col">
+                            <a href="member.html" class="footer-link">Team</a>
+                            <a href="member.html#board-member" class="footer-sub-link">Board Member</a>
+                            <a href="member.html#team-member" class="footer-sub-link">Team Member</a>
+                        </div>
+                        <div class="footer-nav-col">
+                            <a href="index.html#organization" class="footer-link">info</a>
+                        </div>
                     </nav>
                 </div>
                 <div class="copyright">

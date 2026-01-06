@@ -249,12 +249,64 @@ img {
     left: 0;
     width: 0%;
     height: 2px;
-    background: var(--accent-blob-1);
+    background: #fff;
     transition: width 0.3s var(--easing);
 }
 
 .nav-item:hover::after {
     width: 100%;
+}
+
+/* Header Sub Menu */
+.nav-item-group {
+    position: relative;
+    padding-bottom: 20px;
+    /* Bridge gap for hover */
+    margin-bottom: -20px;
+}
+
+.nav-sub-list {
+    position: absolute;
+    top: 100%;
+    left: -10px;
+    background: #fff;
+    min-width: 180px;
+    list-style: none;
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s var(--easing);
+    z-index: 100;
+}
+
+.nav-item-group:hover .nav-sub-list {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.nav-sub-list li {
+    margin-bottom: 12px;
+}
+
+.nav-sub-list li:last-child {
+    margin-bottom: 0;
+}
+
+.nav-sub-list a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-sub);
+    transition: color 0.3s;
+    white-space: nowrap;
+    display: block;
+}
+
+.nav-sub-list a:hover {
+    color: var(--text-main);
 }
 
 .btn-contact {
@@ -401,11 +453,7 @@ img {
     }
 
     /* Mobile: Keep layout same as PC (Top aligned, not centered vertically) */
-    .hero-main-copy {
-        /* Scale down font size automatically via clamp, no manual override needed */
-        /* margin-top: 0; inherits */
-        /* text-align: center; inherits */
-    }
+
 
     .hero-sub-copy {
         margin-bottom: 60px;
@@ -1003,7 +1051,35 @@ img {
 
 .footer-nav {
     display: flex;
-    gap: 30px;
+    gap: 60px;
+}
+
+@media (max-width: 768px) {
+    .footer-nav {
+        flex-direction: column;
+        gap: 40px;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+.footer-nav-col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-sub-link {
+    font-size: 13px;
+    color: var(--text-sub);
+    padding-left: 0;
+    transition: color 0.3s;
+    font-family: var(--font-jp);
+    /* Ensure JP font for symbols */
+}
+
+.footer-sub-link:hover {
+    color: var(--text-main);
 }
 
 .footer-link {
