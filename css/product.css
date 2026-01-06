@@ -422,6 +422,10 @@
     .product-catch-phrase {
         font-size: 26px;
     }
+
+    .product-description br {
+        display: none;
+    }
 }
 
 .product-item-large {
