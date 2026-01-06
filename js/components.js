@@ -19,9 +19,13 @@ function initComponents() {
     // 2. Inject Header
     const headerPlaceholder = document.getElementById('header-placeholder');
     if (headerPlaceholder) {
+        // Detect if landing/index page
+        const isHomePage = window.location.pathname.endsWith('index.html') || window.location.pathname === '/';
+
         headerPlaceholder.innerHTML = `
             <header class="header" id="header">
                 <a href="index.html" class="logo">JIL</a>
+                
                 <nav class="nav">
                     <ul class="nav-list">
                         <li class="nav-item-group">
@@ -48,18 +52,78 @@ function initComponents() {
                         <li><a href="index.html#organization" class="nav-item">info</a></li>
                     </ul>
                 </nav>
-                <a href="index.html#contact" class="btn-contact">CONTACT</a>
+
+                <div class="header-right">
+                    <a href="index.html#contact" class="btn-contact">CONTACT</a>
+                    <button class="hamburger-btn" id="hamburger-btn" aria-label="Menu">
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Overlay -->
+                <div class="mobile-menu" id="mobile-menu">
+                    <nav class="mobile-nav">
+                        <div class="mobile-nav-item-group">
+                            <span class="mobile-nav-label">About</span>
+                            <a href="about.html#about-mission" class="mobile-sub-link">Mission / Vision / Value</a>
+                            <a href="about.html#about-style" class="mobile-sub-link">Style</a>
+                        </div>
+                        <div class="mobile-nav-item-group">
+                            <span class="mobile-nav-label">Service</span>
+                            <a href="client-solution.html" class="mobile-sub-link">Client solution</a>
+                            <a href="product.html" class="mobile-sub-link">Product</a>
+                        </div>
+                        <div class="mobile-nav-item-group">
+                            <span class="mobile-nav-label">Team</span>
+                            <a href="member.html#board-member" class="mobile-sub-link">Board Member</a>
+                            <a href="member.html#team-member" class="mobile-sub-link">Team Member</a>
+                        </div>
+                        <div class="mobile-nav-item-group">
+                            <a href="index.html#organization" class="mobile-nav-label-link">info</a>
+                        </div>
+                    </nav>
+                </div>
             </header>
         `;
 
-        // Header Scroll Effect
         const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const body = document.body;
+
+        // Function to update header style based on scroll
+        const updateHeaderStyle = () => {
+            const scrollThreshold = 50;
+            if (window.scrollY > scrollThreshold) {
                 header.classList.add('scrolled');
+                header.classList.remove('header-initial-white');
             } else {
                 header.classList.remove('scrolled');
+                if (isHomePage) {
+                    header.classList.add('header-initial-white');
+                }
             }
+        };
+
+        // Initial check
+        updateHeaderStyle();
+
+        window.addEventListener('scroll', updateHeaderStyle);
+
+        // Mobile Menu Toggle
+        hamburgerBtn.addEventListener('click', () => {
+            header.classList.toggle('nav-open');
+            body.style.overflow = header.classList.contains('nav-open') ? 'hidden' : '';
+        });
+
+        // Close menu when clicking sub-links
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                header.classList.remove('nav-open');
+                body.style.overflow = '';
+            });
         });
     }
 
