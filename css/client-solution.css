@@ -143,6 +143,11 @@
 
 /* --- Responsive Header --- */
 @media (max-width: 900px) {
+    .client-solution-header {
+        min-height: auto !important;
+        padding-bottom: 80px !important;
+    }
+
     .client-solution-header .header-main-flex {
         flex-direction: column;
         gap: 30px;
@@ -173,6 +178,8 @@
 
     .client-solution-header .header-title-col {
         padding-left: 0;
+        flex: none !important;
+        width: 100%;
     }
 
     .client-solution-header .page-title {

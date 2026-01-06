@@ -608,6 +608,11 @@
 }
 
 @media (max-width: 768px) {
+    .member-header {
+        min-height: auto !important;
+        padding-bottom: 80px !important;
+    }
+
     .header-main-flex {
         flex-direction: column;
         gap: 30px;
@@ -640,6 +645,8 @@
 
     .header-title-col {
         padding-left: 0;
+        flex: none !important;
+        width: 100%;
     }
 
     .header-message-col {

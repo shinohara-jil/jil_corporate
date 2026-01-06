@@ -176,8 +176,9 @@
 
 @media (max-width: 768px) {
     .editorial-header {
-        min-height: 70vh;
+        min-height: auto !important;
         padding-top: 100px !important;
+        padding-bottom: 80px !important;
     }
 
     .header-main-flex {
@@ -210,13 +211,19 @@
         gap: 40px;
     }
 
+    .header-title-col {
+        padding-left: 0;
+        flex: none !important;
+        width: 100%;
+    }
+
     .header-message-col {
         padding-top: 30px;
         width: 100%;
     }
 
     .editorial-title {
-        font-size: clamp(5rem, 25vw, 10rem) !important;
+        font-size: clamp(3rem, 15vw, 6rem) !important;
     }
 }
 
