@@ -8,7 +8,7 @@
 /* --- Editorial Page Header (Product Variant) --- */
 .product-header {
     min-height: 75vh !important;
-    background: #fdfdfd !important;
+    background: var(--bg-color) !important;
 }
 
 .editorial-header {
@@ -35,19 +35,19 @@
 
 /* Same subtle blobs as about.html */
 .blob-a {
-    width: 700px;
-    height: 700px;
-    background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
-    top: -300px;
+    width: 600px;
+    height: 600px;
+    background: linear-gradient(135deg, #ff9a9e 0%, #a18cd1 100%);
+    top: -200px;
     right: -100px;
     animation: float-blob 20s infinite alternate-reverse;
 }
 
 .blob-b {
-    width: 600px;
-    height: 600px;
-    background: linear-gradient(135deg, #cfd9df 0%, #e2ebf0 100%);
-    bottom: -200px;
+    width: 500px;
+    height: 500px;
+    background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+    bottom: -150px;
     left: -100px;
     animation: float-blob 25s infinite alternate;
 }

@@ -422,6 +422,12 @@ img {
     padding: 100px 30px 40px;
 }
 
+@media (min-width: 768px) {
+    .mobile-menu {
+        display: none !important;
+    }
+}
+
 .nav-open .mobile-menu {
     opacity: 1;
     visibility: visible;

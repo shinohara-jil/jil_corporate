@@ -125,6 +125,14 @@ function initComponents() {
                 body.style.overflow = '';
             });
         });
+
+        // Close menu on resize if width becomes >= 768px
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768 && header.classList.contains('nav-open')) {
+                header.classList.remove('nav-open');
+                body.style.overflow = '';
+            }
+        });
     }
 
     // 3. Inject Footer
