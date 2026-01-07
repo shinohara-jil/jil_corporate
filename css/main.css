@@ -643,6 +643,12 @@ img {
     padding-bottom: 100px;
 }
 
+/* Specific adjustment for Organization section top spacing */
+#organization {
+    padding-top: 100px;
+    /* Increased to separate from Team Link section */
+}
+
 /* 余白を少し縮小 */
 .container {
     max-width: none;
