@@ -361,6 +361,32 @@
     pointer-events: none;
 }
 
+/* External Link Icon */
+.product-cta-btn[target="_blank"] {
+    position: relative;
+    padding-right: 60px;
+}
+
+.product-cta-btn[target="_blank"]::after {
+    content: '';
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 14px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cline x1='10' y1='14' x2='21' y2='3'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.product-cta-btn[target="_blank"]:hover::after {
+    opacity: 1;
+}
+
 /* Right Column - Image */
 .product-item-right {
     display: flex;

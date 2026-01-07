@@ -64,6 +64,9 @@ function initComponents() {
                 <div class="mobile-menu" id="mobile-menu">
                     <nav class="mobile-nav">
                         <div class="mobile-nav-item-group">
+                            <a href="index.html" class="mobile-nav-label-link">TOP</a>
+                        </div>
+                        <div class="mobile-nav-item-group">
                             <a href="about.html" class="mobile-nav-label-link">ABOUT</a>
                         </div>
                         <div class="mobile-nav-item-group">
