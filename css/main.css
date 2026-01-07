@@ -643,10 +643,19 @@ img {
     padding-bottom: 100px;
 }
 
-/* Specific adjustment for Organization section top spacing */
-#organization {
-    padding-top: 100px;
-    /* Increased to separate from Team Link section */
+/* Specific adjustment for Organization section - ensure content is not cut off */
+#organization .section-header-modern {
+    margin-bottom: 70px;
+    /* Standard margin, text visibility fixed with padding-bottom */
+    position: relative;
+    z-index: 1;
+}
+
+#organization .org-grid-wrapper {
+    margin-top: 0;
+    position: relative;
+    z-index: 2;
+    /* Ensure it's above header */
 }
 
 /* 余白を少し縮小 */
