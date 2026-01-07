@@ -607,10 +607,26 @@ img {
     }
 
     /* Mobile: Keep layout same as PC (Top aligned, not centered vertically) */
-
-
     .hero-sub-copy {
         margin-bottom: 60px;
+    }
+    
+    /* Fix for Brave browser: 
+       Brave calculates bottom differently when .hero-content has flexbox with justify-content: center.
+       By making .hero-content position: static, .hero-sub-copy will be positioned relative to .hero instead.
+       .hero-main-copy centering is maintained by .hero's justify-content: center. */
+    .hero-content {
+        position: static;
+    }
+    
+    .hero-content .hero-sub-copy {
+        position: absolute;
+        bottom: 100px;
+        left: 6vw;
+        right: auto;
+        width: auto;
+        top: auto;
+        margin-bottom: 0;
     }
 }
 
