@@ -279,6 +279,18 @@ img {
     width: 100%;
 }
 
+/* PC版: Serviceリンクをクリック不可に */
+@media (min-width: 768px) {
+    .nav-item-disabled {
+        pointer-events: none;
+        cursor: default;
+    }
+    
+    .nav-item-disabled:hover::after {
+        width: 0%;
+    }
+}
+
 /* Header Sub Menu */
 .nav-item-group {
     position: relative;
@@ -604,6 +616,11 @@ img {
 @media (max-width: 768px) {
     .hero-bg-img {
         object-position: 70% center;
+    }
+
+    /* SP版: 英語テキストを2行で表示するためフォントサイズを調整 */
+    .hero-main-copy {
+        font-size: clamp(2.7rem, 7vw, 3.8rem);
     }
 
     /* Mobile: Keep layout same as PC (Top aligned, not centered vertically) */
@@ -1287,6 +1304,18 @@ img {
 
 .footer-link:hover::after {
     width: 100%;
+}
+
+/* PC版: フッターのServiceリンクをクリック不可に */
+@media (min-width: 768px) {
+    .footer-link-disabled {
+        pointer-events: none;
+        cursor: default;
+    }
+    
+    .footer-link-disabled:hover::after {
+        width: 0%;
+    }
 }
 
 .copyright {

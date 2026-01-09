@@ -36,7 +36,7 @@ function initComponents() {
                             </ul>
                         </li>
                         <li class="nav-item-group">
-                            <a href="client-solution.html" class="nav-item">Service</a>
+                            <a href="javascript:void(0)" class="nav-item nav-item-disabled">Service</a>
                             <ul class="nav-sub-list">
                                 <li><a href="client-solution.html">Client solution</a></li>
                                 <li><a href="product.html">Product</a></li>
@@ -147,7 +147,7 @@ function initComponents() {
                             <a href="about.html#about-style" class="footer-sub-link">Style</a>
                         </div>
                         <div class="footer-nav-col">
-                            <a href="client-solution.html" class="footer-link">Service</a>
+                            <a href="javascript:void(0)" class="footer-link footer-link-disabled">Service</a>
                             <a href="client-solution.html" class="footer-sub-link">Client solution</a>
                             <a href="product.html" class="footer-sub-link">Product</a>
                         </div>
