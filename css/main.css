@@ -620,7 +620,8 @@ img {
 
     /* SP版: 英語テキストを2行で表示するためフォントサイズを調整 */
     .hero-main-copy {
-        font-size: clamp(2.7rem, 7vw, 3.8rem);
+        font-size: clamp(2rem, 6vw, 3rem);
+        letter-spacing: -0.03em;
     }
 
     /* Mobile: Keep layout same as PC (Top aligned, not centered vertically) */
@@ -644,6 +645,22 @@ img {
         width: auto;
         top: auto;
         margin-bottom: 0;
+    }
+}
+
+/* iPhone SEなど小画面対応 */
+@media (max-width: 375px) {
+    .hero-main-copy {
+        font-size: clamp(1.2rem, 4.5vw, 1.7rem);
+        letter-spacing: -0.05em;
+    }
+}
+
+/* iPhone SE（320px）など超小画面対応 */
+@media (max-width: 320px) {
+    .hero-main-copy {
+        font-size: clamp(0.75rem, 3.8vw, 1.2rem);
+        letter-spacing: -0.08em;
     }
 }
 
